@@ -24,4 +24,4 @@ jobs:
         protocol: ftps                   # Explicitly force secure FTPS over port 21
         dangerous-clean-slate: false     # Prevents accidental deletion of unmanaged files
         local-dir: ./                  
-        server-dir: ./public_html/
+        server-dir: ../../public_html/
