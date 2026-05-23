@@ -22,4 +22,4 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21098
         local-dir: ./                  
-        server-dir: ./public_html/s
+        server-dir: ./public_html/
