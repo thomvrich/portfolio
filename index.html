@@ -15,31 +15,32 @@
 <body>
 
     <header>
-        <h1>Thomas Richardson</h1>
+        <div class="header-brand">
+            <h1>Thomas Richardson</h1>
+        </div>
+        <!-- What's 9+10? -->
         <nav>
-            <a href="#about-hero">About</a>        
-            <a href="#work-section">My Work</a>
-            <a href="#bio-details">Edu & Exp</a>
-            <a href="#tools-section">My Stack</a>
-            <a href="https://drive.google.com/file/d/1ifYvQtbWwjS5o_CL6y_tdVg-JoAAnCD_/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-project-ad">Resume <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+            <a href="index.html">My Work</a>
+            <a href="about.html">About</a>
+            <a href="lab.html">Lab</a>
+            <a href="https://drive.google.com/file/d/1ifYvQtbWwjS5o_CL6y_tdVg-JoAAnCD_/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
         </nav>
     </header>
 
     <main>
-
-        <!-- About -->
-        <section id="about-hero">
-            <h2>About</h2>
-            <div class="about-content">
-                <img src="assets/avatar.jpg" alt="Thomas Richardson" class="avatar">
-                <div class="about-text">
-                    <p>I solve users' problems in creative ways, because I think you can have fun while making a positive change in someone’s life. I am currently studying Advertising at the University of Oklahoma and plan to attend graduate school to study Human-Computer Interaction after graduation.</p>
-                    <p>My design philosophy is as follows: "I like to think of a digital product as a complex system: the big picture only works if the individual parts are healthy. I try to design by looking at the whole ecosystem, then zooming in on the specific pain points to fix the friction. Because the details are what make the entire experience run smoothly."</p>
-                    <p>I am currently searching for Product Management, UX Design, and Product Marketing internships for Summer 2027.</p>
-                </div>
+        <!-- Hero -->
+        <section id="hero-section">
+            <div class="hero-bg-icons" aria-hidden="true">
+                <img src="assets/icons/favicon-4.svg" alt="" class="hero-bg-icon">
+                <img src="assets/icons/favicon-3.svg" alt="" class="hero-bg-icon">
             </div>
-
-           
+            <div class="hero-left">
+                <p class="hero-greeting"><span id="hero-greeting-text"></span>, I'm</p>
+                <h2 class="hero-name"><span class="hero-name-rust">Thomas Richardson</span></h2>
+                <p class="hero-tagline">Finder of problems and builder of solutions.</p>
+                <p class="hero-location">Previously at Vivacity Tech PBC. Currently wrangling tutors at the OU Math Center.</p>
+                <p class="hero-location">Norman, OK, but mentally still in 東京,日本.</p>
+            </div>
         </section>
 
         <!-- My Work -->
@@ -47,6 +48,8 @@
             <div class="work-intro">
                 <h2>My Work</h2>
                 <p>My work sits at the intersection of user research, design, and strategy— spanning product design, UX, and advertising projects all centered on <strong>understanding people and solving their problems.</strong></p>
+                <br>
+                <p><em>If you're short on time, I would recommend starting with the Math Center Kiosk Redesign. It's the project that best represents how I actually work: finding a real problem, designing a solution, and shipping it.</em></p>
             </div>
 
             <div class="project-grid">
@@ -59,64 +62,81 @@
 
                     <div class="project-card">
                         <video src="assets/mc-demo.mp4" class="card-img" autoplay loop muted playsinline style="height: auto !important; aspect-ratio: unset !important;"></video>
-                        <h4>✨Math Center Kiosk Redesign✨</h4>
-                        <p>While working at the front desk at the Math Center, I realized students were struggling to understand the kiosk interface, so I redesigned it. Using Claude, I created a rapid prototype for a more intuitive user experience, adding clear copy, UI updates, and improved accessibility.</p>
+                        <h4>Math Center Kiosk Redesign</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Fall 2025</span>
+                            <span class="status-badge status-in-review">In Review</span>
+                        </div>
+                        <p>While working at the front desk at the Math Center, I realized students were struggling to understand the kiosk interface. Using Claude and two years of first-hand user research, I created a rapid prototype for a more intuitive user experience, adding clear copy, UI updates, and improved accessibility.</p>
                         <div class="card-actions">
-                            <a href="https://thomvrich.github.io/mckiosk/" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View Project <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
-                            <a href="https://github.com/thomvrich/mckiosk" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View GitHub Repo <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                            <a href="math-center.html" class="btn-project-tech">View Case Study</a>
                         </div>
                     </div>
-
                     <div class="project-card">
                         <img src="assets/vivacity-tech.jpg" alt="Vivacity Tech PBC" class="card-img">
                         <h4>Vivacity Tech PBC</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Spring 2026</span>
+                            <span class="status-badge status-shipped">Shipped</span>
+                        </div>
                         <p>During my time as a product design intern at Vivacity Tech PBC, I redesigned 20+ modals for its Dream 3.0 software. In addition to that I also created and maintained 5 components with 100+ variants.</p>
                         <div class="card-actions">
-                         <a href="https://www.vivacitytech.com/" target="_blank" rel="noopener noreferrer" class="btn-project-tech"> <span class="status-pulse">Coming Soon</span> <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                            <a href="https://www.vivacitytech.com/" target="_blank" rel="noopener noreferrer" class="btn-project-tech btn-coming-soon"><span class="status-pulse">Coming Soon</span></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <video src="assets/pokemon-demo.mp4" class="card-img" autoplay loop muted playsinline></video>
                         <h4>Interactive Pokédex</h4>
-                        <p>I attended a Hacklahoma event where we watched a presentation about "vibe coding." Afterward, we were tasked with creating something Pokémon-related in 30 minutes. This project features all 251 Pokémon from the Kanto and Johto regions.</p>
+                        <div class="card-meta">
+                            <span class="card-date">Fall 2025</span>
+                            <span class="status-badge status-shipped">Shipped</span>
+                        </div>
+                        <p>I attended a Hacklahoma event where we watched a presentation about vibe coding. Afterward, we were tasked with creating something Pokémon-related in 30 minutes. This project features all 251 Pokémon from the Kanto and Johto regions.</p>
                         <div class="card-actions">
-                            <a href="https://thomvrich.github.io/pokedex/" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View Project <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                            <a href="https://thomvrich.github.io/pokedex/" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View Project<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Advertising Column -->
-                <div class="column ad-column">
+                <div class="column creative-column">
                     <div class="column-header">
                         <h3>Advertising & Marketing</h3>
                     </div>
 
                     <div class="project-card">
                         <img src="assets/ralph-lauren-media-plan.jpg" alt="Ralph Lauren Media Plan" class="card-img">
-                        <h4>🥇Ralph Lauren Media Plan🥇</h4>
-                        <p>I worked on a team of 9 to create a comprehensive media plan for Ralph Lauren as part of a class project. I contributed to research, the budget, and crafted a buyer persona. Our team placed first in our class competition and was dubbed "Agency Ready" by an industry professional.</p>
+                        <h4>Ralph Lauren Media Plan</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Spring 2026</span>
+                            <span class="status-badge status-first-place">1st Place</span>
+                        </div>
+                        <p>I worked on a team of 9 to create a comprehensive media plan for Ralph Lauren as part of a class project. I contributed to research, the budget, and crafted a buyer persona. Our team placed first out of five teams and was dubbed "Agency Ready" by an industry professional.</p>
                         <div class="card-actions">
-                            <a href="https://canva.link/yveqeu5c62xsq5v" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
-                             <a href="https://www.linkedin.com/feed/update/urn:li:activity:7458661831977492480/" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View LinkedIn Post <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                            <a href="https://canva.link/yveqeu5c62xsq5v" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
                         </div>
                     </div>
-
                     <div class="project-card">
-                        <img src="assets/frozen-garden.jpg" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;"  alt="Frozen Garden Case Study Competition" class="card-img">
+                        <img src="assets/frozen-garden.jpg" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;" alt="Frozen Garden Case Study Competition" class="card-img">
                         <h4>Frozen Garden Case Study Competition</h4>
-                        <p>As part of my Digital Marketing class, I participated in the Digital Marketing Competition as part of a team of 4 and created a DM strategy for The Frozen Garden, a frozen smoothie company. I primarily worked on owned media, were I suggested changes to its Instagram post strategy and suggested an idea for a custom smoothie product and website.</p>
+                        <div class="card-meta">
+                            <span class="card-date">Spring 2026</span>
+                            <span class="status-badge status-presented">Presented</span>
+                        </div>
+                        <p>As part of my Digital Marketing class, I participated in the Digital Marketing Competition as part of a team of 4 and created a DM strategy for The Frozen Garden, a frozen smoothie company. I primarily worked on owned media, where I suggested changes to its Instagram post strategy and suggested an idea for a custom smoothie product and website.</p>
                         <div class="card-actions">
-                            <a href="https://canva.link/cnprqzi3uy7ta7w" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                            <a href="https://canva.link/cnprqzi3uy7ta7w" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
                         </div>
                     </div>
-
                     <div class="project-card">
-                        <img src="assets/advertising-research.jpg" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;" 
-                            alt="Advertising Research Final Project" class="card-img">
-                    <h4>Advertising Research Final Project</h4>
+                        <img src="assets/advertising-research.jpg" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;" alt="Advertising Research Final Project" class="card-img">
+                        <h4>Gray Owl Coffee Research Report</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Fall 2025</span>
+                            <span class="status-badge status-presented">Presented</span>
+                        </div>
                         <p>I worked on a team of 6 to conduct research and provide recommendations to increase Gray Owl Coffee's market share in the Norman, OK area for a class project. Using MRI Simmons data, I created a target-prospect analysis using demographics and psychographics to determine whom the coffee shop should focus on.</p>
                         <div class="card-actions">
-                            <a href="https://canva.link/pqfmdhbxn6gltbz" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation <img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                            <a href="https://canva.link/pqfmdhbxn6gltbz" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
                         </div>
                     </div>
                 </div>
@@ -124,66 +144,6 @@
             </div>
         </section>
 
-        <!-- Education & Experience -->
-        <section id="bio-details">
-            <div class="detail-column">
-                <h2>Education</h2>
-                <!-- Future Education --
-                <div class="detail-item">
-                    <p class="detail-institution">🇺🇸 | University of ??????</p>
-                    <p class="detail-location">???,???</p>
-                    <p class="detail-role">M.S. ??? (????-????)</p>
-                </div>-->
-                <div class="detail-item">
-                    <p class="detail-institution"><img src="assets/icons/usa-flag.svg" alt="US" class="flag-icon"> | University of Oklahoma</p>
-                    <p class="detail-location">Norman, Oklahoma</p>
-                    <p class="detail-role">B.A. Advertising (1.202312.2026)</p>
-                </div>
-                <div class="detail-item">
-                    <p class="detail-institution"><img src="assets/icons/jpn-flag.svg" alt="JP" class="flag-icon"> | J.F. Oberlin University</p>
-                    <p class="detail-location">東京,日本 (Tokyo, Japan)</p>
-                    <p class="detail-role">Study Abroad (1.2026)</p>
-                </div>
-            </div>
-
-            <div class="detail-column">
-                <h2>Experience</h2>
-                <div class="detail-item">
-                    <p class="detail-institution"><img src="assets/icons/usa-flag.svg" alt="US" class="flag-icon"> | Vivacity Tech PBC</p>
-                    <p class="detail-location">Remote</p>
-                    <p class="detail-role">Product Design Intern (1.2026~4.2026)</p>
-                </div>
-            </div>
-        </section>
-
-       <section id="tools-section">
-    <h2>My Tech Stack</h2>
-    <div class="marquee-container">
-        <div class="marquee-track">
-            
-            <div class="marquee-group">
-                <img src="assets/icons/tool-1.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-2.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-3.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-4.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-5.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-6.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-7.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-8.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-1.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-2.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-3.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-4.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-5.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-6.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-7.svg" alt="" class="tool-icon">
-                <img src="assets/icons/tool-8.svg" alt="" class="tool-icon">
-             
-            </div>
-
-        </div>
-    </div>
-</section>
 
     </main>
 
@@ -196,23 +156,25 @@
                 <span id="footer-clock"></span>
                 <span id="theme-visual"></span>
             </p>
-            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated May 2026</p>
+            <p class="footer-clock">
+                <span class="jp-label" data-translation="Tokyo, Japan">東京,日本</span><span id="tokyo-clock"></span>
+                <span id="tokyo-theme-visual"></span>
+            </p>
+            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 5.2026</p>
             <a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link"><p class="footer-copy">Open Source Licensing</p></a>
         </div>
         <div class="footer-right">
             <div class="footer-nav-section">
                 <h4 class="footer-section-heading">Navigation</h4>
                 <div class="footer-nav-links">
-                    <a href="#about-hero">About</a>
-                    <a href="#work-section">My Work</a>
-                    <a href="#bio-details">Edu &amp; Exp</a>
-                    <a href="#tools-section">My Stack</a>
+                    <a href="index.html">My Work</a>
+                    <a href="about.html">About</a>
+                    <a href="lab.html">Lab</a>
                     <a href="https://drive.google.com/file/d/1ifYvQtbWwjS5o_CL6y_tdVg-JoAAnCD_/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
-                 
                 </div>
             </div>
             <div class="footer-connect-section">
-                <h4 class="footer-section-heading">Connect</h4>
+                <h4 class="footer-section-heading">Let's Connect!</h4>
                 <div class="footer-contact-links">
                     <button>
                         <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>

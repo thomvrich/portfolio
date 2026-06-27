@@ -3,7 +3,12 @@ const currentLocation = { text: "Norman, OK", zone: "America/Chicago", label: "C
 
 function initClock() {
     const clockEl = document.getElementById('footer-clock');
-    const formatter = new Intl.DateTimeFormat('en-US', {
+    const dateFmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: currentLocation.zone,
+        month: 'numeric',
+        day: 'numeric',
+    });
+    const timeFmt = new Intl.DateTimeFormat('en-US', {
         timeZone: currentLocation.zone,
         hour: '2-digit',
         minute: '2-digit',
@@ -12,7 +17,8 @@ function initClock() {
     });
 
     function tick() {
-        clockEl.textContent = `${currentLocation.text}: ${formatter.format(new Date())} ${currentLocation.label}`;
+        const now = new Date();
+        clockEl.textContent = `${currentLocation.text}: ${dateFmt.format(now)} ${timeFmt.format(now)} ${currentLocation.label}`;
     }
 
     tick();
@@ -32,15 +38,15 @@ function getActiveMoonState() {
     const n = ((totalDaysElapsed % 29.53059) + 29.53059) % 29.53059;
 
     const base = "assets/icons/moon phases/";
-    if (n < 1.36)  return { phase: "New Moon",        icon: base + "mdi--moon-new.svg" };
-    if (n < 6.02)  return { phase: "Waxing Crescent", icon: base + "mdi--moon-waxing-crescent.svg" };
-    if (n < 8.74)  return { phase: "First Quarter",   icon: base + "mdi--moon-first-quarter.svg" };
-    if (n < 13.40) return { phase: "Waxing Gibbous",  icon: base + "mdi--moon-waxing-gibbous.svg" };
-    if (n < 16.12) return { phase: "Full Moon",       icon: base + "mdi--moon-full.svg" };
-    if (n < 20.78) return { phase: "Waning Gibbous",  icon: base + "mdi--moon-waning-gibbous.svg" };
-    if (n < 23.51) return { phase: "Third Quarter",   icon: base + "mdi--moon-last-quarter.svg" };
-    if (n < 28.17) return { phase: "Waning Crescent", icon: base + "mdi--moon-waning-crescent.svg" };
-    return { phase: "New Moon", icon: base + "mdi--moon-new.svg" };
+    if (n < 1.36)  return { phase: "New Moon",        icon: base + "new.svg" };
+    if (n < 6.02)  return { phase: "Waxing Crescent", icon: base + "waxing-crescent.svg" };
+    if (n < 8.74)  return { phase: "First Quarter",   icon: base + "first-quarter.svg" };
+    if (n < 13.40) return { phase: "Waxing Gibbous",  icon: base + "waxing-gibbous.svg" };
+    if (n < 16.12) return { phase: "Full Moon",       icon: base + "full.svg" };
+    if (n < 20.78) return { phase: "Waning Gibbous",  icon: base + "waning-gibbous.svg" };
+    if (n < 23.51) return { phase: "Third Quarter",   icon: base + "last-quarter.svg" };
+    if (n < 28.17) return { phase: "Waning Crescent", icon: base + "waning-crescent.svg" };
+    return { phase: "New Moon", icon: base + "new.svg" };
 }
 
 function renderThemeVisual() {
@@ -53,14 +59,94 @@ function renderThemeVisual() {
     );
 
     if (hourInZone >= 6 && hourInZone < 20) {
-        container.innerHTML = `<img src="assets/icons/mdi--white-balance-sunny.svg" alt="Daytime" class="theme-icon">`;
+        container.innerHTML = `<img src="assets/icons/moon phases/sun.svg" alt="Daytime" class="theme-icon">`;
     } else {
         const moon = getActiveMoonState();
         container.innerHTML = `<img src="${moon.icon}" alt="${moon.phase}" title="${moon.phase}" class="theme-icon">`;
     }
 }
 
-document.addEventListener('DOMContentLoaded', renderThemeVisual);
+document.addEventListener('DOMContentLoaded', function () {
+    renderThemeVisual();
+    setInterval(renderThemeVisual, 60000);
+});
+
+
+/* ── Hero greeting ── */
+function initHeroGreeting() {
+    const el = document.getElementById('hero-greeting-text');
+    if (!el) return;
+
+    const hour = parseInt(
+        new Intl.DateTimeFormat('en-US', { timeZone: currentLocation.zone, hour: 'numeric', hour12: false }).format(new Date()),
+        10
+    );
+
+    let japanese, english;
+    if (hour >= 5 && hour < 12) {
+        japanese = 'おはよう';
+        english = 'Good Morning';
+    } else if (hour >= 12 && hour < 18) {
+        japanese = 'こんにちは';
+        english = 'Hello';
+    } else {
+        japanese = 'こんばんは';
+        english = 'Good Evening';
+    }
+
+    el.textContent = japanese;
+    el.dataset.translation = english;
+}
+
+document.addEventListener('DOMContentLoaded', initHeroGreeting);
+
+/* ── Tokyo clock ── */
+function initTokyoClock() {
+    const tokyoEl     = document.getElementById('tokyo-clock');
+    const tokyoVisual = document.getElementById('tokyo-theme-visual');
+    if (!tokyoEl) return;
+
+    const dateFmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Tokyo',
+        month: 'numeric',
+        day: 'numeric',
+    });
+    const timeFmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Tokyo',
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+    });
+    const hourFmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Tokyo',
+        hour: 'numeric',
+        hour12: false,
+    });
+
+    function renderTokyoTheme() {
+        if (!tokyoVisual) return;
+        const hour = parseInt(hourFmt.format(new Date()), 10);
+        if (hour >= 6 && hour < 20) {
+            tokyoVisual.innerHTML = `<img src="assets/icons/moon phases/sun.svg" alt="Daytime in Tokyo" class="theme-icon">`;
+        } else {
+            const moon = getActiveMoonState();
+            tokyoVisual.innerHTML = `<img src="${moon.icon}" alt="${moon.phase}" title="${moon.phase}" class="theme-icon">`;
+        }
+    }
+
+    function tickClock() {
+        const now = new Date();
+        tokyoEl.textContent = `: ${dateFmt.format(now)} ${timeFmt.format(now)} JST`;
+    }
+
+    tickClock();
+    renderTokyoTheme();
+    setInterval(tickClock, 1000);
+    setInterval(renderTokyoTheme, 60000);
+}
+
+document.addEventListener('DOMContentLoaded', initTokyoClock);
 
 /* ── Email copy ── */
 const copyMessages = [
