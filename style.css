@@ -125,6 +125,12 @@ nav a:not(.btn-project-ad):hover {
   color: var(--ad-header-bg);
 }
 
+nav a[aria-current="page"] {
+  color: #94A3B8;
+  cursor: default;
+  pointer-events: none;
+}
+
 /* ── Main wrapper ── */
 main {
   max-width: 1100px;
@@ -439,13 +445,13 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   margin-bottom: 20px;
 }
 
 .split-brain-icon {
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
 }
 
 .split-brain-heading {

@@ -137,7 +137,7 @@ function initTokyoClock() {
 
     function tickClock() {
         const now = new Date();
-        tokyoEl.textContent = `: ${dateFmt.format(now)} ${timeFmt.format(now)} JST`;
+        tokyoEl.textContent = `${dateFmt.format(now)} ${timeFmt.format(now)} JST`;
     }
 
     tickClock();
