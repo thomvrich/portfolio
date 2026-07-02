@@ -4,15 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Center Kiosk Redesign — Thomas Richardson</title>
+<!-- SEO -->
+<meta name="description" content="UX case study: Thomas Richardson redesigned the OU Math Center check-in kiosk after two years of first-hand observation, improving copy clarity, wayfinding, and accessibility.">
+<meta name="author" content="Thomas Richardson">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thomasvrichardson.me/math-center.html">
 
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thomasvrichardson.me/math-center.html">
+<meta property="og:title" content="Math Center Kiosk Redesign — Thomas Richardson">
+<meta property="og:description" content="UX case study: redesigning the OU Math Center check-in kiosk after two years of first-hand observation. Covers problem discovery, design decisions, and accessibility improvements.">
+<meta property="og:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Thomas Richardson">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://thomasvrichardson.me/math-center.html">
+<meta name="twitter:title" content="Math Center Kiosk Redesign — Thomas Richardson">
+<meta name="twitter:description" content="UX case study: redesigning the OU Math Center check-in kiosk after two years of first-hand observation.">
+<meta name="twitter:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/icons/favicon-4.svg" type="image/x-icon">
 </head>
 <body class="case-study-page">
+
+    <a href="#main" class="skip-link">Skip to main content</a>
 
     <header>
         <div class="header-brand">
@@ -22,17 +45,17 @@
             <a href="index.html">My Work</a>
             <a href="about.html">About</a>
             <a href="lab.html">Lab</a>
-            <a href="https://drive.google.com/file/d/1ifYvQtbWwjS5o_CL6y_tdVg-JoAAnCD_/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+            <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
 
         <section class="case-study-hero">
-            <h1>Math Center Kiosk Redesign</h1>
+            <h2>Math Center Kiosk Redesign</h2>
             <p class="case-study-subtitle">UX Design · Rapid Prototyping · Accessibility</p>
             <p class="case-study-subtitle">Estimated Read Time: 3 minutes</p>
-            <video src="assets/math-center-case-study/math-center-full-demo.mp4" class="case-study-hero-video" autoplay loop muted playsinline></video>
+            <video src="assets/math-center-case-study/math-center-full-demo.mp4" class="case-study-hero-video" width="1280" height="890" autoplay loop muted playsinline preload="metadata" aria-label="Full walkthrough of the redesigned Math Center kiosk prototype"></video>
         </section>
 
         <article>
@@ -54,15 +77,15 @@
                 <h2>Before</h2>
                 <div class="case-study-gallery">
                     <figure class="case-study-figure">
-                        <img src="assets/math-center-case-study/old-home.PNG" alt="Original home screen" class="case-study-img">
+                        <img src="assets/math-center-case-study/old-home.webp" alt="Original home screen" class="case-study-img" width="1400" height="973" loading="lazy">
                         <figcaption>Current Home Screen with "Get Started" button</figcaption>
                     </figure>
                     <figure class="case-study-figure">
-                        <img src="assets/math-center-case-study/old-course-.PNG" alt="Original course selection" class="case-study-img">
+                        <img src="assets/math-center-case-study/old-course-.webp" alt="Original course selection" class="case-study-img" width="1400" height="973" loading="lazy">
                         <figcaption>Original Course Selection Screen</figcaption>
                     </figure>
                     <figure class="case-study-figure">
-                        <img src="assets/math-center-case-study/old-no-course.PNG" alt="Original no course view" class="case-study-img">
+                        <img src="assets/math-center-case-study/old-no-course.webp" alt="Original no course view" class="case-study-img" width="1400" height="973" loading="lazy">
                         <figcaption></figcaption>
                     </figure>
                 </div>
@@ -72,15 +95,15 @@
                 <h2>After</h2>
                 <div class="case-study-gallery">
                     <figure class="case-study-figure">
-                        <img src="assets/math-center-case-study/new-home.PNG" alt="Redesigned home screen" class="case-study-img">
+                        <img src="assets/math-center-case-study/new-home.webp" alt="Redesigned home screen" class="case-study-img" width="1400" height="973" loading="lazy">
                         <figcaption>I decided to change the copy on the first page to “Check In or Check Out,” so students see it upon entering and know they can check out using the same system when they leave.</figcaption>
                     </figure>
                     <figure class="case-study-figure">
-                        <img src="assets/math-center-case-study/new-course.PNG" alt="Redesigned course selection" class="case-study-img">
+                        <img src="assets/math-center-case-study/new-course.webp" alt="Redesigned course selection" class="case-study-img" width="1400" height="973" loading="lazy">
                         <figcaption>Then I decided to put the course names on the course selection page in the color room they are in; for example, if a math course name is in blue text, it is in the Blue Room. I also added the room name in parentheses for color-blind users.</figcaption>
                     </figure>
                     <figure class="case-study-figure">
-                        <img src="assets/math-center-case-study/admin-panel.PNG" alt="Admin panel" class="case-study-img">
+                        <img src="assets/math-center-case-study/admin-panel.webp" alt="Admin panel" class="case-study-img" width="1400" height="973" loading="lazy">
                         <figcaption>Top section of the admin panel</figcaption>
                     </figure>
                 </div>
@@ -90,7 +113,7 @@
                 <h2>Other Decisions</h2>
                 <p>I also took the opportunity to change the employee label, as it currently reads “Tutor Check-In (Not a Course),” even though both Front Desk Assistants and Tutors use it. That is also a pain point for new Front Desk Assistants.</p>
                 <br>
-                <p>I included some other features behind an admin panel accessible via the user ID “11223434”, which houses the <strong>custom messages, hours display, and snow effects.</strong> The 11223434 was inspired by the Konami Code (up, up, down, down, left, right, left, right) as I love a good Easter Egg, so I thought I’d go with the most iconic one.</p>
+                <p>I included some other features behind an admin panel accessible via a hidden ID, which houses the <strong>custom messages, hours display, and snow effects.</strong> The code is inspired by the Konami Code (up, up, down, down, left, right, left, right) as I love a good Easter Egg, so I thought I’d go with the most iconic one.</p>
                 <br>
                 <p>The thought behind the custom messages was spreading good vibes around finals, “Good luck with finals!” and spreading holiday cheer, “Happy Holidays!” Of course, this could be used for other reasons, such as announcing an early closure.</p>
                 <br>
@@ -104,7 +127,7 @@
                 <p>Currently, this prototype is working its way up the chain at OU, as the Math Center Director and Associate Director both liked it.</p>
             </section>
             <section class="case-study-section">
-                <p><em>For testing purposes, here are some credentials to use: <ul><li>Thomas Richardson: 09022003</li><li>Harry Potter: 06261997</li><li>Admin Console: 11223434</li></ul></em></p>
+                <p><em>Want to try it yourself? Reach out and I'm happy to share demo login credentials.</em></p>
             <div class="case-study-actions">
                 <a href="https://thomvrich.github.io/mckiosk/" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View Project<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
                 <a href="https://github.com/thomvrich/mckiosk" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View GitHub Repo<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
@@ -124,11 +147,11 @@
                 <span id="theme-visual"></span>
             </p>
             <p class="footer-clock">
-                <span class="tokyo-clock-wrap"><span class="jp-label" data-translation="Tokyo, Japan">東京,日本</span>: <span id="tokyo-clock"></span></span>
+                <span class="tokyo-clock-wrap"><span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>: <span id="tokyo-clock"></span></span>
                 <span id="tokyo-theme-visual"></span>
             </p>
-            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 6.2026</p>
-            <a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link"><p class="footer-copy">Open Source Licensing</p></a>
+            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 7.2026</p>
+            <p class="footer-copy"><a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link">Open Source Licensing</a> &middot; <a href="https://github.com/thomvrich/portfolio" target="_blank" rel="noopener noreferrer" class="license-link">Changelog</a></p>
         </div>
         <div class="footer-right">
             <div class="footer-nav-section">
@@ -137,15 +160,13 @@
                     <a href="index.html">My Work</a>
                     <a href="about.html">About</a>
                     <a href="lab.html">Lab</a>
-                    <a href="https://drive.google.com/file/d/1ifYvQtbWwjS5o_CL6y_tdVg-JoAAnCD_/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+                    <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                 </div>
             </div>
             <div class="footer-connect-section">
                 <h4 class="footer-section-heading">Let's Connect!</h4>
                 <div class="footer-contact-links">
-                    <button>
-                        <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    </button>
+                    <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <button onclick="copyEmail()" id="emailBtn">
                         <span id="emailText">thomasrichardson.contact@gmail.com</span>
                     </button>
@@ -155,6 +176,12 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Vercel Web Analytics (privacy-friendly, cookieless) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>
