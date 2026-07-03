@@ -3,67 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thomas Richardson — Site Under Maintenance</title>
-    <meta name="robots" content="noindex, nofollow">
+    <title>Thomas Richardson</title>
+    <!-- SEO -->
+<meta name="description" content="Thomas Richardson is a Creative PM and UX designer based in Norman, OK — bridging advertising strategy and product thinking to build intentional user experiences.">
+<meta name="author" content="Thomas Richardson">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thomasvrichardson.me/">
+
+<!-- Open Graph (LinkedIn, Slack, Discord previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thomasvrichardson.me/">
+<meta property="og:title" content="Thomas Richardson — Creative PM & UX Designer">
+<meta property="og:description" content="Bridging advertising strategy and product thinking to build intentional user experiences. Currently open to PM, UX Design, and UX Research opportunities.">
+<meta property="og:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Thomas Richardson">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://thomasvrichardson.me/">
+<meta name="twitter:title" content="Thomas Richardson — Creative PM & UX Designer">
+<meta name="twitter:description" content="Bridging advertising strategy and product thinking to build intentional user experiences.">
+<meta name="twitter:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/icons/favicon-3.svg" type="image/x-icon">
-    <style>
-      :root {
-        --bg: #F1F5F9;
-        --ink: #1E293B;
-        --muted: #55606E;
-        --rust: #B4462B;
-      }
-      html, body {
-        height: 100%;
-      }
-      body {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 24px;
-        font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-        background-color: var(--bg);
-        color: var(--ink);
-        text-align: center;
-        box-sizing: border-box;
-      }
-      .wrap {
-        max-width: 480px;
-      }
-      h1 {
-        font-family: 'Josefin Sans', -apple-system, sans-serif;
-        font-weight: 700;
-        font-size: clamp(1.75rem, 4vw, 2.25rem);
-        letter-spacing: -0.02em;
-        margin: 0 0 12px;
-      }
-      h1 span {
-        color: var(--rust);
-      }
-      p {
-        font-size: 1.0625rem;
-        line-height: 1.6;
-        color: var(--muted);
-        margin: 0 0 8px;
-      }
-      a {
-        color: var(--ink);
-        font-weight: 600;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-      a:hover {
-        color: var(--rust);
-      }
-    </style>
 </head>
 <body>
-    <div class="wrap">
-        <h1><span>Thomas Richardson</span> — site's down for a bit</h1>
-        <p>Making some updates behind the scenes. Back shortly.</p>
-        <p>Need to reach me in the meantime? <a href="mailto:thomasrichardson.contact@gmail.com">thomasrichardson.contact@gmail.com</a></p>
-    </div>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="header-brand">
+            <h1>Thomas Richardson</h1>
+        </div>
+        <nav>
+            <a href="index.html" aria-current="page">My Work</a>
+            <a href="about.html">About</a>
+            <a href="lab.html">Lab</a>
+            <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <!-- Hero -->
+        <section id="hero-section">
+            <div class="hero-bg-icons" aria-hidden="true">
+                <img src="assets/icons/favicon-4.svg" alt="" class="hero-bg-icon">
+                <img src="assets/icons/favicon-3.svg" alt="" class="hero-bg-icon">
+            </div>
+            <div class="hero-left">
+                <p class="hero-greeting"><span id="hero-greeting-text"></span>, I'm</p>
+                <h2 class="hero-name"><span class="hero-name-rust">Thomas Richardson</span></h2>
+                <p class="hero-tagline">Finder of problems and builder of solutions.</p>
+                <p class="hero-location">Previously at Vivacity Tech PBC. Currently wrangling tutors at the OU Math Center.</p>
+                <p class="hero-location">Norman, OK, but mentally still in <span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>.</p>
+                <a href="#work-section" class="btn-project-tech hero-cta">See Work</a>
+            </div>
+        </section>
+        <!-- My Work -->
+        <section id="work-section">
+            <div class="work-intro">
+                <h2>My Work</h2>
+                <p>My work sits at the intersection of user research, design, and strategy — spanning product design, UX, and advertising projects all centered on <strong>understanding people and solving their problems.</strong></p>
+                <br>
+                <p><em>If you're short on time, I would recommend starting with the Math Center Kiosk Redesign. It's the project that best represents how I actually work: finding a real problem, designing a solution, and shipping it.</em></p>
+            </div>
+            <div class="project-grid">
+                <!-- Technical Column -->
+                <div class="column tech-column">
+                    <div class="column-header">
+                        <h3>Technical</h3>
+                    </div>
+
+                    <div class="project-card">
+                        <video src="assets/mc-demo-2.mp4" class="card-img" width="1036" height="720" autoplay loop muted playsinline aria-label="Looping demo of the redesigned Math Center check-in kiosk" style="height: auto !important; aspect-ratio: unset !important;"></video>
+                        <h4>Math Center Kiosk Redesign</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Fall 2025</span>
+                            <span class="status-badge status-in-review">In Review</span>
+                        </div>
+                        <p>While working at the front desk at the Math Center, I realized students were struggling to understand the kiosk interface. Using Claude and two years of first-hand user research, I created a rapid prototype for a more intuitive user experience, adding clear copy, UI updates, and improved accessibility.</p>
+                        <div class="card-actions">
+                            <a href="math-center.html" class="btn-project-tech">View Case Study</a>
+                        </div>
+                    </div>
+                 <!--   <div class="project-card">
+                        <img src="assets/vivacity-tech.jpg" alt="Vivacity Tech PBC" class="card-img" width="600" height="600" loading="lazy">
+                        <h4>Vivacity Tech PBC</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Spring 2026</span>
+                            <span class="status-badge status-in-review">In Review</span>
+                        </div>
+                        <p>During my time as a product design intern at Vivacity Tech PBC, I redesigned 20+ modals for its Dream 3.0 software. In addition to that, I also created and maintained 5 components with 100+ variants.</p>
+                        <div class="card-actions">
+                            <a href="https://www.vivacitytech.com/" target="_blank" rel="noopener noreferrer" class="btn-project-tech btn-coming-soon"><span class="status-pulse">Coming Soon</span></a>
+                        </div>
+                    </div> -->
+                    <div class="project-card">
+                        <video src="assets/pokemon-demo.mp4" class="card-img" autoplay loop muted playsinline aria-label="Looping demo of the interactive Pokédex web app"></video>
+                        <h4>Interactive Pokédex</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Fall 2025</span>
+                            <span class="status-badge status-shipped">Shipped</span>
+                        </div>
+                        <p>I attended a Hacklahoma event where we watched a presentation about vibe coding. Afterward, we were tasked with creating something Pokémon-related in 30 minutes. This project features all 251 Pokémon from the Kanto and Johto regions.</p>
+                        <div class="card-actions">
+                            <a href="https://thomvrich.github.io/pokedex/" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View Project<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Advertising Column -->
+                <div class="column creative-column">
+                    <div class="column-header">
+                        <h3>Advertising</h3>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="assets/ralph-lauren-media-plan.webp" alt="Ralph Lauren Media Plan" class="card-img" width="1200" height="1800" loading="lazy">
+                        <h4>Ralph Lauren Media Plan</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Spring 2026</span>
+                            <span class="status-badge status-first-place">1st Place</span>
+                        </div>
+                        <p>I worked on a team of 9 to create a comprehensive media plan for Ralph Lauren as part of a class project. I contributed to the research and budget, and crafted a buyer persona. Our team placed first out of five teams and was dubbed "Agency Ready" by an industry professional.</p>
+                        <div class="card-actions">
+                            <a href="documents/admediapres.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="assets/advertising-research.jpg" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;" alt="Advertising Research Final Project" class="card-img" width="1920" height="1080" loading="lazy">
+                        <h4>Gray Owl Coffee Research Report</h4>
+                        <div class="card-meta">
+                            <span class="card-date">Fall 2025</span>
+                            <span class="status-badge status-presented">Presented</span>
+                        </div>
+                        <p>I worked on a team of 6 to conduct research and provide recommendations to increase Gray Owl Coffee's market share in the Norman, OK area for a class project. Using MRI Simmons data, I created a target-prospect analysis using demographics and psychographics to determine whom the coffee shop should focus on.</p>
+                        <div class="card-actions">
+                            <a href="documents/adresearchpres.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="cta-section">
+            <h2>Like What You See?</h2>
+            <button onclick="copyCta()" class="btn-project-ad cta-btn" id="ctaBtn">
+                <span id="ctaText">Email Me</span>
+            </button>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="footer-name-row">
+                <span class="footer-site-name">Thomas Richardson</span>
+            </div>
+            <p class="footer-clock">
+                <span id="footer-clock"></span>
+                <span id="theme-visual"></span>
+            </p>
+            <p class="footer-clock">
+                <span class="tokyo-clock-wrap"><span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>: <span id="tokyo-clock"></span></span>
+                <span id="tokyo-theme-visual"></span>
+            </p>
+            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 7.2026</p>
+            <p class="footer-copy"><a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link">Open Source Licensing</a> &middot; <a href="https://github.com/thomvrich/portfolio" target="_blank" rel="noopener noreferrer" class="license-link">Changelog</a></p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-nav-section">
+                <h4 class="footer-section-heading">Navigation</h4>
+                <div class="footer-nav-links">
+                    <a href="index.html">My Work</a>
+                    <a href="about.html">About</a>
+                    <a href="lab.html">Lab</a>
+                    <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                </div>
+            </div>
+            <div class="footer-connect-section">
+                <h4 class="footer-section-heading">Let's Connect!</h4>
+                <div class="footer-contact-links">
+                    <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <button onclick="copyEmail()" id="emailBtn">
+                        <span id="emailText">thomasrichardson.contact@gmail.com</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Vercel Web Analytics (privacy-friendly, cookieless) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>

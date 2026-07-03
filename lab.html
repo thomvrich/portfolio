@@ -3,67 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thomas Richardson — Site Under Maintenance</title>
-    <meta name="robots" content="noindex, nofollow">
+    <title>Lab — Thomas Richardson</title>
+<!-- SEO -->
+<meta name="description" content="The Lab — side projects and class assignments by Thomas Richardson, including ad creative, World Cup social campaigns, and experimental work.">
+<meta name="author" content="Thomas Richardson">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thomasvrichardson.me/lab.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thomasvrichardson.me/lab.html">
+<meta property="og:title" content="Lab — Thomas Richardson">
+<meta property="og:description" content="Side projects and class assignments by Thomas Richardson — ad creative, social campaigns, and experimental work.">
+<meta property="og:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Thomas Richardson">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://thomasvrichardson.me/lab.html">
+<meta name="twitter:title" content="Lab — Thomas Richardson">
+<meta name="twitter:description" content="Side projects and class assignments by Thomas Richardson.">
+<meta name="twitter:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/icons/favicon-3.svg" type="image/x-icon">
-    <style>
-      :root {
-        --bg: #F1F5F9;
-        --ink: #1E293B;
-        --muted: #55606E;
-        --rust: #B4462B;
-      }
-      html, body {
-        height: 100%;
-      }
-      body {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 24px;
-        font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-        background-color: var(--bg);
-        color: var(--ink);
-        text-align: center;
-        box-sizing: border-box;
-      }
-      .wrap {
-        max-width: 480px;
-      }
-      h1 {
-        font-family: 'Josefin Sans', -apple-system, sans-serif;
-        font-weight: 700;
-        font-size: clamp(1.75rem, 4vw, 2.25rem);
-        letter-spacing: -0.02em;
-        margin: 0 0 12px;
-      }
-      h1 span {
-        color: var(--rust);
-      }
-      p {
-        font-size: 1.0625rem;
-        line-height: 1.6;
-        color: var(--muted);
-        margin: 0 0 8px;
-      }
-      a {
-        color: var(--ink);
-        font-weight: 600;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-      a:hover {
-        color: var(--rust);
-      }
-    </style>
 </head>
 <body>
-    <div class="wrap">
-        <h1><span>Thomas Richardson</span> — site's down for a bit</h1>
-        <p>Making some updates behind the scenes. Back shortly.</p>
-        <p>Need to reach me in the meantime? <a href="mailto:thomasrichardson.contact@gmail.com">thomasrichardson.contact@gmail.com</a></p>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="header-brand">
+            <h1>Thomas Richardson</h1>
+        </div>
+        <nav>
+            <a href="index.html">My Work</a>
+            <a href="about.html">About</a>
+            <a href="lab.html" aria-current="page">Lab</a>
+            <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="lab-section">
+            <div class="work-intro">
+                <h2>Lab</h2>
+                <p>Side projects and class assignments created for personal and academic purposes, not for commercial use.</p>
+            </div>
+
+            <div class="lab-project">
+                <div class="lab-ad-gallery">
+                    <figure class="lab-ad-item">
+                        <img src="assets/lab/wc%20ads/wc_fb.webp" alt="Facebook ad: Messi celebrating over the word &quot;soccer&quot; translated into seven languages, announcing the 2026 World Cup host countries" width="1400" height="1400">
+                    </figure>
+                    <figure class="lab-ad-item">
+                        <img src="assets/lab/wc%20ads/wc_ig_p.webp" alt="Instagram post: a fan waving a Brazil flag in a packed stadium, with a &quot;Six Months to Go&quot; countdown to the June 11, 2026 kickoff" width="1400" height="1467" loading="lazy">
+                    </figure>
+                    <figure class="lab-ad-item">
+                        <img src="assets/lab/wc%20ads/wc_ig_s.webp" alt="Instagram Story ad: a sea of orange-clad Dutch fans with copy congratulating them on their 2026 World Cup ticket" width="1400" height="2491" loading="lazy">
+                    </figure>
+                    <figure class="lab-ad-item">
+                        <img src="assets/lab/wc%20ads/wc_tt.webp" alt="TikTok ad: a crowd waving Japanese flags, asking whether Samurai Blue will cut up the competition at the 2026 World Cup" width="1400" height="3032" loading="lazy">
+                    </figure>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="footer-name-row">
+                <span class="footer-site-name">Thomas Richardson</span>
+            </div>
+            <p class="footer-clock">
+                <span id="footer-clock"></span>
+                <span id="theme-visual"></span>
+            </p>
+            <p class="footer-clock">
+                <span class="tokyo-clock-wrap"><span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>: <span id="tokyo-clock"></span></span>
+                <span id="tokyo-theme-visual"></span>
+            </p>
+            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 7.2026</p>
+            <p class="footer-copy"><a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link">Open Source Licensing</a> &middot; <a href="https://github.com/thomvrich/portfolio" target="_blank" rel="noopener noreferrer" class="license-link">Changelog</a></p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-nav-section">
+                <h4 class="footer-section-heading">Navigation</h4>
+                <div class="footer-nav-links">
+                    <a href="index.html">My Work</a>
+                    <a href="about.html">About</a>
+                    <a href="lab.html">Lab</a>
+                    <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                </div>
+            </div>
+            <div class="footer-connect-section">
+                <h4 class="footer-section-heading">Let's Connect!</h4>
+                <div class="footer-contact-links">
+                    <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <button onclick="copyEmail()" id="emailBtn">
+                        <span id="emailText">thomasrichardson.contact@gmail.com</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Media zoom lightbox -->
+    <div id="lab-zoom-overlay" class="lab-zoom-overlay" role="dialog" aria-modal="true" aria-label="Media preview">
+        <button class="lab-zoom-close" id="lab-zoom-close" aria-label="Close preview">✕</button>
+        <div id="lab-zoom-display"></div>
     </div>
+
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            const overlay = document.getElementById('lab-zoom-overlay');
+            const display = document.getElementById('lab-zoom-display');
+            const closeBtn = document.getElementById('lab-zoom-close');
+
+            let lastFocused = null;
+
+            function openZoom(el) {
+                lastFocused = el;
+                display.innerHTML = '';
+                if (el.tagName === 'VIDEO') {
+                    const v = document.createElement('video');
+                    v.src = el.src;
+                    v.className = 'lab-zoom-media';
+                    v.autoplay = true;
+                    v.loop = true;
+                    v.muted = true;
+                    v.playsInline = true;
+                    v.controls = true;
+                    display.appendChild(v);
+                } else {
+                    const img = document.createElement('img');
+                    img.src = el.src;
+                    img.alt = el.alt;
+                    img.className = 'lab-zoom-media';
+                    display.appendChild(img);
+                }
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                closeBtn.focus();
+            }
+
+            function closeZoom() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                display.innerHTML = '';
+                if (lastFocused) { lastFocused.focus(); lastFocused = null; }
+            }
+
+            overlay.addEventListener('click', closeZoom);
+            display.addEventListener('click', function (e) { e.stopPropagation(); });
+            closeBtn.addEventListener('click', function (e) { e.stopPropagation(); closeZoom(); });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeZoom();
+            });
+
+            document.querySelectorAll('.lab-ad-item img, .lab-ad-item video').forEach(function (el) {
+                el.setAttribute('tabindex', '0');
+                el.setAttribute('role', 'button');
+                if (!el.getAttribute('aria-label')) {
+                    el.setAttribute('aria-label', (el.alt || 'Media') + ' — enlarge');
+                }
+                el.addEventListener('click', function () { openZoom(el); });
+                el.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openZoom(el);
+                    }
+                });
+            });
+        })();
+    </script>
+
+    <!-- Vercel Web Analytics (privacy-friendly, cookieless) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>

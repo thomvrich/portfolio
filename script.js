@@ -95,6 +95,7 @@ function initHeroGreeting() {
     }
 
     el.textContent = japanese;
+    el.lang = 'ja';
     el.dataset.translation = english;
 }
 
@@ -148,6 +149,28 @@ function initTokyoClock() {
 
 document.addEventListener('DOMContentLoaded', initTokyoClock);
 
+/* ── Respect reduced-motion: stop looping demo videos ── */
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('video[autoplay]').forEach(function (v) {
+            v.removeAttribute('autoplay');
+            v.removeAttribute('loop');
+            v.pause();
+        });
+    }
+});
+
+/* ── CTA copy ── */
+function copyCta() {
+    navigator.clipboard.writeText("thomasrichardson.contact@gmail.com").then(() => {
+        const span = document.getElementById("ctaText");
+        span.innerText = "Copied! 🎉";
+        setTimeout(() => {
+            span.innerText = "Email Me";
+        }, 2000);
+    });
+}
+
 /* ── Email copy ── */
 const copyMessages = [
     "Copied to Clipboard! 🎉",
@@ -160,6 +183,9 @@ let copyResetTimer = null;
 function copyEmail() {
     navigator.clipboard.writeText("thomasrichardson.contact@gmail.com").then(() => {
         const textSpan = document.getElementById("emailText");
+        const btn = document.getElementById("emailBtn");
+
+        btn.style.minWidth = btn.offsetWidth + 'px';
 
         copyClickCount = Math.min(copyClickCount + 1, copyMessages.length);
         clearTimeout(copyResetTimer);
@@ -168,6 +194,7 @@ function copyEmail() {
 
         copyResetTimer = setTimeout(() => {
             textSpan.innerText = "thomasrichardson.contact@gmail.com";
+            btn.style.minWidth = '';
             copyClickCount = 0;
         }, 2000);
     });
