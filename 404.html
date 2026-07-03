@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found — Thomas Richardson</title>
+<!-- SEO -->
+<meta name="description" content="This page doesn't exist. Head back to Thomas Richardson's portfolio.">
+<meta name="robots" content="noindex, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/favicon-3.svg" type="image/x-icon">
+</head>
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="header-brand">
+            <h1>Thomas Richardson</h1>
+        </div>
+        <nav>
+            <a href="index.html">My Work</a>
+            <a href="about.html">About</a>
+            <a href="lab.html">Lab</a>
+            <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <section id="error-section">
+            <div class="split-brain-icons">
+                <img src="assets/icons/favicon-4.svg" alt="Technical — Navy" class="split-brain-icon">
+                <img src="assets/icons/favicon-3.svg" alt="Creative — Rust" class="split-brain-icon">
+            </div>
+            <p class="error-code">404</p>
+            <h2 class="jp-label" lang="ja" data-translation="Page Not Found">ページが見つかりません</h2>
+            <p class="error-copy">The link's broken or the page moved — but everything else is right where it should be.</p>
+            <a href="index.html" class="btn-project-tech">Back to My Work</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="footer-name-row">
+                <span class="footer-site-name">Thomas Richardson</span>
+            </div>
+            <p class="footer-clock">
+                <span id="footer-clock"></span>
+                <span id="theme-visual"></span>
+            </p>
+            <p class="footer-clock">
+                <span class="tokyo-clock-wrap"><span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>: <span id="tokyo-clock"></span></span>
+                <span id="tokyo-theme-visual"></span>
+            </p>
+            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 7.2026</p>
+            <p class="footer-copy"><a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link">Open Source Licensing</a> &middot; <a href="https://github.com/thomvrich/portfolio" target="_blank" rel="noopener noreferrer" class="license-link">Changelog</a></p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-nav-section">
+                <h4 class="footer-section-heading">Navigation</h4>
+                <div class="footer-nav-links">
+                    <a href="index.html">My Work</a>
+                    <a href="about.html">About</a>
+                    <a href="lab.html">Lab</a>
+                    <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                </div>
+            </div>
+            <div class="footer-connect-section">
+                <h4 class="footer-section-heading">Let's Connect!</h4>
+                <div class="footer-contact-links">
+                    <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <button onclick="copyEmail()" id="emailBtn">
+                        <span id="emailText">thomasrichardson.contact@gmail.com</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Vercel Web Analytics (privacy-friendly, cookieless) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
