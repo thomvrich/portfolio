@@ -318,6 +318,7 @@ main {
 }
 
 #cta-section h2 {
+  font-size: 1.5rem;
   margin-bottom: 8px;
 }
 
@@ -508,13 +509,13 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .split-brain-icon {
-  width: 80px;
-  height: 80px;
+  width: 96px;
+  height: 96px;
 }
 
 .split-brain-heading {
@@ -1035,6 +1036,7 @@ footer {
 
 .case-study-hero-video {
   width: 100%;
+  height: auto;
   border-radius: 12px;
   margin-top: 24px;
   display: block;
