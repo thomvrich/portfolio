@@ -4,3 +4,4 @@
 # Editor/IDE tooling — not part of the site
 .cursor/
 .githooks/
+.vscode/

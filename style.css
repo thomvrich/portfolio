@@ -119,6 +119,13 @@ header h1 {
   margin: 0;
 }
 
+/* Clickable brand name — link to home, no underline, keep the h1 color */
+.header-brand a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
 nav {
   display: flex;
   gap: 8px;
@@ -1441,110 +1448,6 @@ main {
   }
 }
 
-@keyframes scrollMarqueeReverse {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.marquee-track--reverse {
-  animation-name: scrollMarqueeReverse;
-}
-
-/* ── About summary: Tech Stack / Skills / Contact ── */
-#about-summary {
-  padding: 48px 0 72px;
-}
-
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-items: start;
-}
-
-.summary-col {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.summary-heading {
-  margin: 0;
-}
-
-.summary-heading--tech    { color: var(--tech-title); }   /* navy  */
-.summary-heading--skills  { color: var(--ad-title); }     /* rust  */
-.summary-heading--contact { color: var(--text-muted); }   /* gray  */
-
-.summary-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.summary-list li {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: var(--text-main);
-}
-
-.summary-contact a,
-.summary-contact button {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text-main);
-  background: none;
-  border: none;
-  padding: 0;
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.summary-contact a:hover,
-.summary-contact button:hover {
-  color: var(--ad-header-bg);
-}
-
-/* Compact marquee variant — reuses the full-size marquee, just smaller */
-.marquee-container--compact {
-  max-width: 220px;
-  margin: 0;
-}
-
-.marquee-container--compact .marquee-track {
-  padding: 8px 0;
-}
-
-.marquee-container--compact .tool-icon {
-  width: 44px;
-  height: 44px;
-}
-
-.marquee-container--compact .tool-wrap::after {
-  display: none; /* no hover tooltips in the compact strip */
-}
-
-@media (max-width: 768px) {
-  #about-summary {
-    padding: 36px 0 56px;
-  }
-
-  .summary-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-}
 
 /* ── Footer ── */
 footer {

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32" fill="none"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><g clip-path="url(#clip0_36_39)">
+<circle cx="16" cy="16" r="16" fill="url(#pattern0_36_39)"></circle>
+<path d="M31 16C31 7.71573 24.2843 1 16 1C7.71573 1 1 7.71573 1 16C1 24.2843 7.71573 31 16 31V32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32V31C24.2843 31 31 24.2843 31 16Z" fill="#B4462B"></path>
+</g><defs>
+<clipPath id="clip0_36_39">
+<rect width="32" height="32" fill="white"></rect>
+</clipPath>
+<pattern id="pattern0_36_39" patternUnits="userSpaceOnUse" patternTransform="matrix(100 0 0 200 -34 -34)" preserveAspectRatio="none" viewBox="0 0 100 200" width="1" height="1">
+<use xlink:href="#pattern0_36_39_inner" transform="translate(-100 0)"></use>
+<g id="pattern0_36_39_inner">
+<rect x="50" width="50" height="100" fill="#B4462B"></rect>
+</g>
+<use xlink:href="#pattern0_36_39_inner" transform="translate(-50 100)"></use>
+<use xlink:href="#pattern0_36_39_inner" transform="translate(50 100)"></use>
+</pattern></defs></svg>
