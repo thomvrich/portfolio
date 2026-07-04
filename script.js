@@ -199,3 +199,216 @@ function copyEmail() {
         }, 2000);
     });
 }
+
+/* ── Swatch carousel ── */
+function initSwatchCarousel(rootId, currentId, totalId) {
+    const root = document.getElementById(rootId);
+    if (!root) return;
+
+    const track   = root.querySelector('.swatch-track');
+    const swatches = Array.from(root.querySelectorAll('.swatch'));
+    const prevBtn = root.querySelector('.swatch-prev');
+    const nextBtn = root.querySelector('.swatch-next');
+    const curEl   = document.getElementById(currentId);
+    const totEl   = document.getElementById(totalId);
+    if (!track || swatches.length === 0) return;
+
+    let page = 0;
+
+    // How many swatches fit per page, derived from actual laid-out widths.
+    function perPage() {
+        const viewport = root.querySelector('.swatch-viewport');
+        const swatchW  = swatches[0].getBoundingClientRect().width;
+        const gap      = 12;
+        return Math.max(1, Math.round((viewport.clientWidth + gap) / (swatchW + gap)));
+    }
+
+    function totalPages() {
+        return Math.ceil(swatches.length / perPage());
+    }
+
+    function render() {
+        const pages = totalPages();
+        if (page > pages - 1) page = pages - 1;
+
+        const step = swatches[0].getBoundingClientRect().width + 12;
+        track.style.transform = `translateX(-${page * perPage() * step}px)`;
+
+        if (curEl) curEl.textContent = page + 1;
+        if (totEl) totEl.textContent = pages;
+        if (prevBtn) prevBtn.disabled = page === 0;
+        if (nextBtn) nextBtn.disabled = page >= pages - 1;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => { if (page > 0) { page--; render(); } });
+    if (nextBtn) nextBtn.addEventListener('click', () => { if (page < totalPages() - 1) { page++; render(); } });
+
+    // Keep edge tooltips from being clipped: shift them inward if they'd
+    // overflow the viewport left/right. Runs on hover/focus of each swatch.
+    const viewport = root.querySelector('.swatch-viewport');
+    function positionTip(swatch) {
+        const tip = swatch.querySelector('.swatch-tip');
+        if (!tip || !viewport) return;
+        tip.style.setProperty('--tip-shift', '0px');
+        // Measure after the reset so we get the centered geometry.
+        const tipRect  = tip.getBoundingClientRect();
+        const viewRect = viewport.getBoundingClientRect();
+        const pad = 6;
+        let shift = 0;
+        if (tipRect.left < viewRect.left + pad) {
+            shift = (viewRect.left + pad) - tipRect.left;
+        } else if (tipRect.right > viewRect.right - pad) {
+            shift = (viewRect.right - pad) - tipRect.right;
+        }
+        tip.style.setProperty('--tip-shift', shift + 'px');
+    }
+    swatches.forEach((sw) => {
+        sw.addEventListener('mouseenter', () => positionTip(sw));
+        sw.addEventListener('focus', () => positionTip(sw));
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(render, 150);
+    });
+
+    render();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSwatchCarousel('colorCarousel', 'colorPageCurrent', 'colorPageTotal');
+});
+
+/* ── Design system: flip demo column navy ⇄ rust ── */
+function initCompFlip() {
+    const btn     = document.getElementById('compFlipBtn');
+    const column  = document.getElementById('compDemoColumn');
+    const heading = document.getElementById('compDemoHeading');
+    if (!btn || !column) return;
+
+    btn.addEventListener('click', () => {
+        const isRust = column.classList.toggle('creative-column');
+        column.classList.toggle('tech-column', !isRust);
+        btn.setAttribute('aria-pressed', String(isRust));
+        btn.textContent = isRust ? 'Flip to Technical' : 'Flip to Advertising';
+        if (heading) heading.textContent = isRust ? 'Advertising' : 'Technical';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initCompFlip);
+
+/* ── Design system: standalone demo clocks (ds- prefixed IDs) ── */
+function initDsClocks() {
+    const local = document.getElementById('ds-footer-clock');
+    const tokyo = document.getElementById('ds-tokyo-clock');
+    if (!local && !tokyo) return;
+
+    function fmt(zone) {
+        const d = new Intl.DateTimeFormat('en-US', { timeZone: zone, month: 'numeric', day: 'numeric' });
+        const t = new Intl.DateTimeFormat('en-US', { timeZone: zone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+        return (now) => `${d.format(now)} ${t.format(now)}`;
+    }
+
+    const localFmt = fmt(currentLocation.zone);
+    const tokyoFmt = fmt('Asia/Tokyo');
+
+    function tick() {
+        const now = new Date();
+        if (local) local.textContent = `${currentLocation.text}: ${localFmt(now)} ${currentLocation.label}`;
+        if (tokyo) tokyo.textContent = `${tokyoFmt(now)} JST`;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // Day/night visuals for the demo rows
+    function visual(elId, zone) {
+        const el = document.getElementById(elId);
+        if (!el) return;
+        const hour = parseInt(new Intl.DateTimeFormat('en-US', { timeZone: zone, hour: 'numeric', hour12: false }).format(new Date()), 10);
+        if (hour >= 6 && hour < 20) {
+            el.innerHTML = `<img src="assets/icons/moon phases/sun.svg" alt="Daytime" class="theme-icon">`;
+        } else {
+            const moon = getActiveMoonState();
+            el.innerHTML = `<img src="${moon.icon}" alt="${moon.phase}" title="${moon.phase}" class="theme-icon">`;
+        }
+    }
+    function renderVisuals() {
+        visual('ds-theme-visual', currentLocation.zone);
+        visual('ds-tokyo-theme-visual', 'Asia/Tokyo');
+    }
+    renderVisuals();
+    setInterval(renderVisuals, 60000);
+}
+
+document.addEventListener('DOMContentLoaded', initDsClocks);
+
+/* ── Design system: standalone copy-email demo (ds- prefixed IDs) ── */
+function initDsCopyEmail() {
+    const btn      = document.getElementById('ds-emailBtn');
+    const textSpan = document.getElementById('ds-emailText');
+    if (!btn || !textSpan) return;
+
+    let count = 0;
+    let resetTimer = null;
+
+    btn.addEventListener('click', () => {
+        navigator.clipboard.writeText("thomasrichardson.contact@gmail.com").then(() => {
+            btn.style.minWidth = btn.offsetWidth + 'px';
+            count = Math.min(count + 1, copyMessages.length);
+            clearTimeout(resetTimer);
+            textSpan.innerText = copyMessages[count - 1];
+            resetTimer = setTimeout(() => {
+                textSpan.innerText = "thomasrichardson.contact@gmail.com";
+                btn.style.minWidth = '';
+                count = 0;
+            }, 2000);
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initDsCopyEmail);
+
+/* ── Design system: keep the Links specimens from navigating ── */
+function initDsLinkDemo() {
+    const demo = document.getElementById('dsLinkDemo');
+    if (!demo) return;
+    demo.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link) e.preventDefault();
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initDsLinkDemo);
+
+/* ── Sticky section-nav scroll-spy (project pages) ── */
+function initSectionNav() {
+    const nav = document.querySelector('.section-nav');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('a'));
+    const targets = links
+        .map((a) => document.getElementById(a.getAttribute('href').slice(1)))
+        .filter(Boolean);
+    if (targets.length === 0) return;
+
+    const linkFor = (id) => links.find((a) => a.getAttribute('href') === '#' + id);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                links.forEach((a) => a.classList.remove('is-active'));
+                const active = linkFor(entry.target.id);
+                if (active) active.classList.add('is-active');
+            }
+        });
+    }, {
+        // Trigger when a section is near the top, just under the sticky bars.
+        rootMargin: '-150px 0px -65% 0px',
+        threshold: 0,
+    });
+
+    targets.forEach((t) => observer.observe(t));
+}
+
+document.addEventListener('DOMContentLoaded', initSectionNav);

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Brain — Design System</title>
+    <!-- SEO -->
+<meta name="description" content="Split Brain — the design system behind Thomas Richardson's portfolio.">
+<meta name="author" content="Thomas Richardson">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thomasvrichardson.me/design-system.html">
+
+<!-- Open Graph (LinkedIn, Slack, Discord previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thomasvrichardson.me/design-system.html">
+<meta property="og:title" content="Split Brain — Design System">
+<meta property="og:description" content="The design system behind Thomas Richardson's portfolio.">
+<meta property="og:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Thomas Richardson">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://thomasvrichardson.me/design-system.html">
+<meta name="twitter:title" content="Split Brain — Design System">
+<meta name="twitter:description" content="The design system behind Thomas Richardson's portfolio.">
+<meta name="twitter:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Noto+Sans+JP:wght@400;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/favicon-3.svg" type="image/x-icon">
+</head>
+<body class="case-study-page">
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="header-brand">
+            <h1>Thomas Richardson</h1>
+        </div>
+        <nav>
+            <a href="index.html">My Work</a>
+            <a href="about.html">About</a>
+            <a href="lab.html">Lab</a>
+            <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+    </header>
+
+    <nav class="section-nav" id="sectionNav" aria-label="On this page">
+        <div class="section-nav-inner">
+            <a href="#ds-principles">Principles</a>
+            <a href="#ds-colors">Colors</a>
+            <a href="#ds-typography">Typography</a>
+            <a href="#ds-spacing">Spacing &amp; Scale</a>
+            <a href="#ds-components">Components</a>
+            <a href="#ds-motion">Motion &amp; Interactions</a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <!-- Hero -->
+        <section id="hero-section">
+            <div class="hero-bg-icons" aria-hidden="true">
+                <img src="assets/icons/favicon-4.svg" alt="" class="hero-bg-icon">
+                <img src="assets/icons/favicon-3.svg" alt="" class="hero-bg-icon">
+            </div>
+            <div class="hero-left">
+                <p class="hero-greeting"><span id="hero-greeting-text"></span>, I'm</p>
+                <h2 class="hero-name"><span class="hero-name-rust">Split Brain</span></h2>
+                <p class="hero-tagline">The design system behind this website.</p>
+                <p class="hero-location">Built with HTML, CSS, and JavaScript.</p>
+                <p class="hero-location">Updated as of 7.2026.</p>
+                <a href="#ds-section" class="btn-project-tech hero-cta">See More</a>
+            </div>
+        </section>
+
+        <!-- Design System -->
+        <section id="ds-section">
+            <div class="ds-principles" id="ds-principles">
+                <h2 class="ds-principles-heading">Principles</h2>
+                <p class="ds-principles-lead">Split Brain is built on one idea: my work comes from two halves of one brain. <strong class="ds-principles-navy">Navy</strong> is the technical and product side. <strong class="ds-principles-rust">Rust</strong> is the creative and advertising side. Every color, card, and button on the site picks a side, and this page documents only what the site actually uses, nothing aspirational.</p>
+                <p class="ds-principles-lead">Or at least I hope...</p>
+                <div class="ds-principle-grid">
+                    <div class="ds-principle">
+                        <h3>Honest by default</h3>
+                        <p>Every token and component here is pulled from the live site. If it isn't used, it isn't shown.</p>
+                    </div>
+                    <div class="ds-principle">
+                        <h3>Two minds, one whole</h3>
+                        <p>Navy and rust are equal and opposite — two views of the same mind. Category color signals which kind of work you're looking at.</p>
+                    </div>
+                    <div class="ds-principle">
+                        <h3>Accessible on purpose</h3>
+                        <p>Focus states, skip links, AA-contrast text, and reduced-motion support are baked in, not bolted on.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ds-stack">
+                <div class="column creative-column" id="ds-colors">
+                    <div class="column-header">
+                        <h3>Colors</h3>
+                    </div>
+                    <div class="project-card">
+                        <div class="swatch-carousel" id="colorCarousel">
+                            <button type="button" class="swatch-arrow swatch-prev" aria-label="Previous colors"><img src="assets/icons/arrow_back_ios.svg" alt="" class="swatch-arrow-icon"></button>
+                            <div class="swatch-viewport">
+                                <div class="swatch-track">
+                                    <!-- Main palette -->
+                                    <div class="swatch" style="--swatch: #EFF5FC;" tabindex="0">
+                                        <span class="swatch-tip">Global page background</span>
+                                        <span class="swatch-hex">#EFF5FC</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #FFFFFF;" tabindex="0">
+                                        <span class="swatch-tip">Card &amp; surface background</span>
+                                        <span class="swatch-hex">#FFFFFF</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #122945;" tabindex="0">
+                                        <span class="swatch-tip">Main text &amp; navy (Technical) headers</span>
+                                        <span class="swatch-hex">#122945</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #3C5675;" tabindex="0">
+                                        <span class="swatch-tip">Muted / secondary text (AA compliant)</span>
+                                        <span class="swatch-hex">#3C5675</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #021734;" tabindex="0">
+                                        <span class="swatch-tip">Technical card titles (deep navy)</span>
+                                        <span class="swatch-hex">#021734</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #274261;" tabindex="0">
+                                        <span class="swatch-tip">Technical CTA hover state</span>
+                                        <span class="swatch-hex">#274261</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #B4462B;" tabindex="0">
+                                        <span class="swatch-tip">Rust (Advertising) headers &amp; CTAs</span>
+                                        <span class="swatch-hex">#B4462B</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #7C2D12;" tabindex="0">
+                                        <span class="swatch-tip">Advertising card titles (deep rust)</span>
+                                        <span class="swatch-hex">#7C2D12</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #C2593F;" tabindex="0">
+                                        <span class="swatch-tip">Advertising CTA hover state</span>
+                                        <span class="swatch-hex">#C2593F</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #F7FAFD;" tabindex="0">
+                                        <span class="swatch-tip">Gray 50 — lightest tint</span>
+                                        <span class="swatch-hex">#F7FAFD</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #DEE9F5;" tabindex="0">
+                                        <span class="swatch-tip">Gray 200 — subtle borders &amp; fills</span>
+                                        <span class="swatch-hex">#DEE9F5</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #C5D6E9;" tabindex="0">
+                                        <span class="swatch-tip">Gray 300 — image placeholders</span>
+                                        <span class="swatch-hex">#C5D6E9</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #89A4C5;" tabindex="0">
+                                        <span class="swatch-tip">Gray 400 — muted accents</span>
+                                        <span class="swatch-hex">#89A4C5</span>
+                                    </div>
+                                    <!-- One-off / semantic colors -->
+                                    <div class="swatch" style="--swatch: #DCFCE7;" tabindex="0">
+                                        <span class="swatch-tip">Status badge — "Shipped" background</span>
+                                        <span class="swatch-hex">#DCFCE7</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #15803D;" tabindex="0">
+                                        <span class="swatch-tip">Status badge — "Shipped" text</span>
+                                        <span class="swatch-hex">#15803D</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #F5F3FF;" tabindex="0">
+                                        <span class="swatch-tip">Status badge — "In Review" background</span>
+                                        <span class="swatch-hex">#F5F3FF</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #6D28D9;" tabindex="0">
+                                        <span class="swatch-tip">Status badge — "In Review" text</span>
+                                        <span class="swatch-hex">#6D28D9</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #FDE68A;" tabindex="0">
+                                        <span class="swatch-tip">Status badge — "1st Place" background</span>
+                                        <span class="swatch-hex">#FDE68A</span>
+                                    </div>
+                                    <div class="swatch" style="--swatch: #78350F;" tabindex="0">
+                                        <span class="swatch-tip">Status badge — "1st Place" text</span>
+                                        <span class="swatch-hex">#78350F</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="swatch-arrow swatch-next" aria-label="Next colors"><img src="assets/icons/arrow_forward_ios.svg" alt="" class="swatch-arrow-icon"></button>
+                        </div>
+                        <p class="swatch-page-label"><span id="colorPageCurrent">1</span> / <span id="colorPageTotal">1</span></p>
+                    </div>
+                </div>
+                <div class="column creative-column" id="ds-typography">
+                    <div class="column-header">
+                        <h3>Typography</h3>
+                    </div>
+                    <div class="project-card">
+                        <div class="type-split">
+                            <div class="type-half">
+                                <p class="type-family">Josefin Sans<span class="type-info" tabindex="0" aria-label="About Josefin Sans"><img src="assets/icons/info.svg" alt="" class="type-info-icon"><span class="type-tip">A geometric sans with tall, elegant capitals. Used for all headings and brand marks to give the site its distinctive voice.</span></span></p>
+                                <p class="type-role">Headings &middot; 700</p>
+                                <div class="type-scale type-scale-josefin">
+                                    <p class="type-row"><span class="type-sample type-h1">Josefin Sans</span><span class="type-spec">H1 &middot; 32px</span></p>
+                                    <p class="type-row"><span class="type-sample type-h2">Josefin Sans</span><span class="type-spec">H2 &middot; 28px</span></p>
+                                    <p class="type-row"><span class="type-sample type-h3">Josefin Sans</span><span class="type-spec">H3 &middot; 24px</span></p>
+                                    <p class="type-row"><span class="type-sample type-h4">Josefin Sans</span><span class="type-spec">H4 &middot; 20px</span></p>
+                                </div>
+                            </div>
+                            <div class="type-half">
+                                <p class="type-family">Open Sans<span class="type-info" tabindex="0" aria-label="About Open Sans"><img src="assets/icons/info.svg" alt="" class="type-info-icon"><span class="type-tip">A neutral, highly legible humanist sans. Carries all body copy and UI text across weights and the italic.</span></span></p>
+                                <p class="type-role">Body &amp; UI &middot; 400/600/700 &middot; Italic</p>
+                                <div class="type-scale type-scale-open">
+                                    <p class="type-row"><span class="type-sample type-body">Open Sans</span><span class="type-spec">Body &middot; 16px</span></p>
+                                    <p class="type-row"><span class="type-sample type-body type-semibold">Open Sans</span><span class="type-spec">Semibold &middot; 16px</span></p>
+                                    <p class="type-row"><span class="type-sample type-body"><strong>Open Sans</strong></span><span class="type-spec">Bold &middot; 16px</span></p>
+                                    <p class="type-row"><span class="type-sample type-body"><em>Open Sans</em></span><span class="type-spec">Italic &middot; 16px</span></p>
+                                    <p class="type-row"><span class="type-sample type-small">Open Sans</span><span class="type-spec">Small &middot; 14px</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="type-jp">
+                            <p class="type-family" lang="ja">Noto Sans JP<span class="type-info" tabindex="0" aria-label="About Noto Sans JP" lang="en"><img src="assets/icons/info.svg" alt="" class="type-info-icon"><span class="type-tip">A comprehensive Japanese companion face. Renders every Japanese string on the site consistently, so Japanese is never left to system fallbacks.</span></span></p>
+                            <p class="type-role">Japanese &middot; 400/700 &middot; scales with its context</p>
+                            <div class="type-scale type-scale-jp">
+                                <p class="type-row"><span class="type-sample type-h4 jp-label" lang="ja" data-translation="Tokyo, Japan · Hello" tabindex="0">東京日本・こんにちは</span><span class="type-spec">Greeting / label &middot; 400</span></p>
+                                <p class="type-row"><span class="type-sample type-body jp-label" lang="ja" data-translation="Tokyo, Japan · Hello" tabindex="0">東京日本・こんにちは</span><span class="type-spec">Body &middot; 400</span></p>
+                                <p class="type-row"><span class="type-sample type-body type-semibold jp-label" lang="ja" data-translation="Tokyo, Japan · Hello" tabindex="0">東京日本・こんにちは</span><span class="type-spec">Semibold &middot; 700</span></p>
+                                <p class="type-row"><span class="type-sample type-small jp-label" lang="ja" data-translation="Tokyo, Japan · Hello" tabindex="0">東京日本・こんにちは</span><span class="type-spec">Small / UI &middot; 400</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column creative-column" id="ds-spacing">
+                    <div class="column-header">
+                        <h3>Spacing &amp; Scale</h3>
+                    </div>
+                    <div class="project-card">
+                        <div class="comp-group">
+                            <p class="comp-group-title">Type Scale</p>
+                            <p class="comp-group-desc">Sizes follow a Major Third scale (each step is 1.25× the last), built on a 16px base. This keeps headings and body text in a consistent rhythm.</p>
+                            <div class="comp-demo comp-demo-scale">
+                                <div class="scale-row"><span class="scale-bar" style="--scale-size: 32px;"></span><span class="scale-label">H1 · 32px · 2rem</span></div>
+                                <div class="scale-row"><span class="scale-bar" style="--scale-size: 28px;"></span><span class="scale-label">H2 · 28px · 1.75rem</span></div>
+                                <div class="scale-row"><span class="scale-bar" style="--scale-size: 24px;"></span><span class="scale-label">H3 · 24px · 1.5rem</span></div>
+                                <div class="scale-row"><span class="scale-bar" style="--scale-size: 20px;"></span><span class="scale-label">H4 · 20px · 1.25rem</span></div>
+                                <div class="scale-row"><span class="scale-bar" style="--scale-size: 16px;"></span><span class="scale-label">Body · 16px · 1rem</span></div>
+                                <div class="scale-row"><span class="scale-bar" style="--scale-size: 14px;"></span><span class="scale-label">Small · 14px · 0.875rem</span></div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Corner Radius</p>
+                            <p class="comp-group-desc">Three rounding roles do most of the work: a gentle radius for small surfaces, a larger one for cards, and a full pill for badges and buttons.</p>
+                            <div class="comp-demo comp-demo-radius">
+                                <div class="radius-cell">
+                                    <span class="radius-swatch" style="border-radius: 4px;"></span>
+                                    <span class="comp-icon-label">4px · fine details</span>
+                                </div>
+                                <div class="radius-cell">
+                                    <span class="radius-swatch" style="border-radius: 8px;"></span>
+                                    <span class="comp-icon-label">8px · small surfaces</span>
+                                </div>
+                                <div class="radius-cell">
+                                    <span class="radius-swatch" style="border-radius: 12px;"></span>
+                                    <span class="comp-icon-label">12px · cards</span>
+                                </div>
+                                <div class="radius-cell">
+                                    <span class="radius-swatch" style="border-radius: 999px;"></span>
+                                    <span class="comp-icon-label">999px · pills</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Spacing Rhythm</p>
+                            <p class="comp-group-desc">Spacing is pragmatic rather than rigid, but it clusters around a few recurring steps that set the vertical and horizontal rhythm.</p>
+                            <div class="comp-demo comp-demo-spacing">
+                                <div class="space-row"><span class="space-bar" style="--space: 8px;"></span><span class="comp-icon-label">8px · tight</span></div>
+                                <div class="space-row"><span class="space-bar" style="--space: 16px;"></span><span class="comp-icon-label">16px · default</span></div>
+                                <div class="space-row"><span class="space-bar" style="--space: 32px;"></span><span class="comp-icon-label">32px · section</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column tech-column" id="ds-components">
+                    <div class="column-header">
+                        <h3>Components</h3>
+                    </div>
+                    <div class="project-card">
+                        <div class="comp-group">
+                            <p class="comp-group-title">Cards &amp; Columns</p>
+                            <p class="comp-group-desc">The main building block of the homepage. A colored column holds a header bar and one or more white cards inside it. The header color sets the category: navy for technical work and rust for advertising.</p>
+                            <div class="comp-demo">
+                                <div class="column tech-column comp-demo-column" id="compDemoColumn">
+                                    <div class="column-header">
+                                        <h3 id="compDemoHeading">Technical</h3>
+                                    </div>
+                                    <div class="project-card">
+                                        <div class="card-img comp-card-placeholder" aria-hidden="true"></div>
+                                        <h4>Project Title</h4>
+                                        <div class="card-meta">
+                                            <span class="card-date">Summer 2026</span>
+                                            <span class="status-badge status-shipped">Shipped</span>
+                                        </div>
+                                        <p>A short description of the project — what the problem was, what was built, and the outcome. Two or three sentences that fit the card comfortably.</p>
+                                        <div class="card-actions">
+                                            <a class="btn-project-tech comp-demo-cta">Button</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="comp-flip-btn" id="compFlipBtn" aria-pressed="false">Flip to Advertising</button>
+                            <p class="comp-subtitle">Detail Card</p>
+                            <p class="comp-group-desc">A smaller card for experience and education. Each one lists a place (with its flag), a location, and a role or program, with no image or buttons.</p>
+                            <div class="comp-demo">
+                                <div class="column neutral-column comp-demo-column">
+                                    <div class="column-header">
+                                        <h3>Education</h3>
+                                    </div>
+                                    <div class="detail-card">
+                                        <p class="detail-institution"><img src="assets/icons/scotland-flag.svg" alt="" class="flag-icon"> | Hogwarts School of Witchcraft &amp; Wizardry</p>
+                                        <p class="detail-location">Highlands, Scotland</p>
+                                        <p class="detail-role">Defence Against the Dark Arts (1991~1998)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Buttons &amp; CTAs</p>
+                            <p class="comp-group-desc">Rounded buttons in the two category colors, navy and rust, plus a version with an external-link arrow, a pulsing "Coming Soon" state, and a button that copies my email to your clipboard.</p>
+                            <p class="comp-a11y-note">Every button shows a clear focus ring when tabbed to, so keyboard users always know where they are.</p>
+                            <div class="comp-demo comp-demo-buttons">
+                                <div class="comp-btn-row">
+                                    <a class="btn-project-tech">View Case Study</a>
+                                    <span class="comp-btn-label">Primary &middot; Navy</span>
+                                </div>
+                                <div class="comp-btn-row">
+                                    <a class="btn-project-ad">View Presentation</a>
+                                    <span class="comp-btn-label">Primary &middot; Rust</span>
+                                </div>
+                                <div class="comp-btn-row">
+                                    <a class="btn-project-tech">View Project<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                                    <span class="comp-btn-label">External link</span>
+                                </div>
+                                <div class="comp-btn-row">
+                                    <a class="btn-project-tech btn-coming-soon"><span class="status-pulse">Coming Soon</span></a>
+                                    <span class="comp-btn-label">Coming Soon</span>
+                                </div>
+                                <div class="comp-btn-row">
+                                    <button type="button" onclick="copyCta()" class="btn-project-ad cta-btn" id="ctaBtn"><span id="ctaText">Email Me</span></button>
+                                    <span class="comp-btn-label">Copy to clipboard</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Status Badges</p>
+                            <p class="comp-group-desc">Small pills that signal a project's stage. Each pairs a soft tinted background with a matching colored dot. The neutral date pill sits alongside them in the card's meta row.</p>
+                            <div class="comp-demo comp-demo-badges">
+                                <div class="comp-badge-row">
+                                    <span class="status-badge status-shipped">Shipped</span>
+                                    <span class="comp-btn-label">Live &amp; public</span>
+                                </div>
+                                <div class="comp-badge-row">
+                                    <span class="status-badge status-in-review">In Review</span>
+                                    <span class="comp-btn-label">In progress / under review</span>
+                                </div>
+                                <div class="comp-badge-row">
+                                    <span class="status-badge status-first-place">1st Place</span>
+                                    <span class="comp-btn-label">Award / recognition</span>
+                                </div>
+                                <div class="comp-badge-row">
+                                    <span class="status-badge status-presented">Presented</span>
+                                    <span class="comp-btn-label">Delivered / presented</span>
+                                </div>
+                                <div class="comp-badge-row">
+                                    <span class="card-date">Fall 2025</span>
+                                    <span class="comp-btn-label">Date pill (neutral)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Links</p>
+                            <p class="comp-group-desc">Text links come in a few flavors depending on where they live. Each fades to a related color when you hover over it.</p>
+                            <div class="comp-demo comp-demo-links" id="dsLinkDemo">
+                                <div class="comp-btn-row">
+                                    <a href="#" role="link" aria-disabled="true" class="btn-project-tech">View Project<img src="assets/icons/link-external.svg" alt="" class="link-icon"></a>
+                                    <span class="comp-btn-label">Button with external-link arrow</span>
+                                </div>
+                                <div class="comp-btn-row comp-links-nav">
+                                    <a href="#" role="link" aria-disabled="true">Nav link</a>
+                                    <span class="comp-btn-label">Header navigation</span>
+                                </div>
+                                <div class="comp-btn-row comp-links-license">
+                                    <a href="#" role="link" aria-disabled="true" class="license-link">Open Source Licensing</a>
+                                    <span class="comp-btn-label">Footer / license link (muted)</span>
+                                </div>
+                                <div class="comp-btn-row">
+                                    <a href="#" role="link" aria-disabled="true" class="skip-link comp-skip-demo">Skip to main content</a>
+                                    <span class="comp-btn-label">Skip link — normally hidden until you tab to it, letting keyboard users jump straight to the content</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Header &amp; Footer</p>
+                            <p class="comp-group-desc">Every page is framed by the same navigation header and footer — you're looking at them at the top and bottom of this page right now. The header carries the brand name and section links; the footer holds the live clocks, navigation, and contact links.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column tech-column" id="ds-motion">
+                    <div class="column-header">
+                        <h3>Motion &amp; Interactions</h3>
+                    </div>
+                    <div class="project-card">
+                        <div class="comp-group">
+                            <p class="comp-group-title">Tech Stack Marquee</p>
+                            <p class="comp-group-desc">A row of tool icons that scrolls on its own and loops forever. Hover any icon to see its name, or hover the row to pause it.</p>
+                            <p class="comp-a11y-note">Respects <code>prefers-reduced-motion</code> — the scroll stops for visitors who ask their system to reduce motion.</p>
+                            <div class="comp-demo comp-demo-marquee">
+                                <div class="marquee-container">
+                                    <div class="marquee-track">
+                                        <div class="marquee-group">
+                                            <span class="tool-wrap" data-label="Claude"><img src="assets/icons/tool-1.svg" alt="Claude" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Gemini"><img src="assets/icons/tool-2.svg" alt="Gemini" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Photoshop"><img src="assets/icons/tool-3.svg" alt="Photoshop" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Illustrator"><img src="assets/icons/tool-4.svg" alt="Illustrator" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="HTML"><img src="assets/icons/tool-5.svg" alt="HTML" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="CSS"><img src="assets/icons/tool-6.svg" alt="CSS" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Figma"><img src="assets/icons/tool-7.svg" alt="Figma" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Arc"><img src="assets/icons/tool-8.svg" alt="Arc" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="GitHub"><img src="assets/icons/tool-9.svg" alt="GitHub" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Vercel"><img src="assets/icons/tool-10.svg" alt="Vercel" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Claude" aria-hidden="true"><img src="assets/icons/tool-1.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Gemini" aria-hidden="true"><img src="assets/icons/tool-2.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Photoshop" aria-hidden="true"><img src="assets/icons/tool-3.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Illustrator" aria-hidden="true"><img src="assets/icons/tool-4.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="HTML" aria-hidden="true"><img src="assets/icons/tool-5.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="CSS" aria-hidden="true"><img src="assets/icons/tool-6.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Figma" aria-hidden="true"><img src="assets/icons/tool-7.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Arc" aria-hidden="true"><img src="assets/icons/tool-8.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="GitHub" aria-hidden="true"><img src="assets/icons/tool-9.svg" alt="" class="tool-icon"></span>
+                                            <span class="tool-wrap" data-label="Vercel" aria-hidden="true"><img src="assets/icons/tool-10.svg" alt="" class="tool-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Live Clocks</p>
+                            <p class="comp-group-desc">Real-time clocks in the footer, showing the current location and Tokyo, each paired with a day/night visual (a sun by day, the live moon phase by night).</p>
+                            <div class="comp-demo comp-demo-clocks">
+                                <p class="footer-clock">
+                                    <span id="ds-footer-clock"></span>
+                                    <span id="ds-theme-visual"></span>
+                                </p>
+                                <p class="footer-clock">
+                                    <span class="tokyo-clock-wrap"><span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>: <span id="ds-tokyo-clock"></span></span>
+                                    <span id="ds-tokyo-theme-visual"></span>
+                                </p>
+                            </div>
+                            <p class="comp-subtitle">Day &amp; Night</p>
+                            <p class="comp-group-desc">Beside each clock sits a sun by day or the moon's current phase by night. The phase is calculated live from the lunar cycle, so it always matches the real sky.</p>
+                            <div class="comp-demo comp-demo-icons">
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/sun.svg" alt="Sun" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">Sun (day)</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/new.svg" alt="New moon" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">New</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/waxing-crescent.svg" alt="Waxing crescent" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">Waxing Crescent</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/first-quarter.svg" alt="First quarter" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">First Quarter</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/waxing-gibbous.svg" alt="Waxing gibbous" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">Waxing Gibbous</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/full.svg" alt="Full moon" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">Full</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/waning-gibbous.svg" alt="Waning gibbous" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">Waning Gibbous</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/last-quarter.svg" alt="Last quarter" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">Last Quarter</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/moon phases/waning-crescent.svg" alt="Waning crescent" class="comp-icon comp-icon-moon">
+                                    <span class="comp-icon-label">Waning Crescent</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Hover to Translate</p>
+                            <p class="comp-group-desc">Japanese words show their English meaning when you hover over them. A nod to my study abroad trip that doesn't alienate anyone who can't read it. Rendered in Noto Sans JP.</p>
+                            <div class="comp-demo comp-demo-hover">
+                                <span class="jp-label" lang="ja" data-translation="Hello" tabindex="0">こんにちは</span>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Copy Email Link</p>
+                            <p class="comp-group-desc">Click to copy my email to your clipboard; keep clicking and the confirmation messages get sillier. I'm not a fan of links that hijack your mail app, so I went with copy and paste instead.</p>
+                            <div class="comp-demo comp-demo-copy">
+                                <div class="footer-contact-links comp-copy-links">
+                                    <button type="button" id="ds-emailBtn">
+                                        <span id="ds-emailText">thomasrichardson.contact@gmail.com</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comp-group">
+                            <p class="comp-group-title">Icons</p>
+                            <p class="comp-group-desc">Small UI icons used throughout the site: carousel arrows, the info marker, the external-link arrow, and the two Split Brain logo halves. All are SVGs, so they stay crisp at any size and recolor to match their surroundings.</p>
+                            <div class="comp-demo comp-demo-icons">
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/arrow_back_ios.svg" alt="Back arrow" class="comp-icon">
+                                    <span class="comp-icon-label">Back</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/arrow_forward_ios.svg" alt="Forward arrow" class="comp-icon">
+                                    <span class="comp-icon-label">Forward</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/info.svg" alt="Info" class="comp-icon">
+                                    <span class="comp-icon-label">Info</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/link-external.svg" alt="External link" class="comp-icon">
+                                    <span class="comp-icon-label">External link</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/favicon-4.svg" alt="Split Brain — Technical half" class="comp-icon comp-icon-brand">
+                                    <span class="comp-icon-label">Split Brain · Navy</span>
+                                </div>
+                                <div class="comp-icon-cell">
+                                    <img src="assets/icons/favicon-3.svg" alt="Split Brain — Creative half" class="comp-icon comp-icon-brand">
+                                    <span class="comp-icon-label">Split Brain · Rust</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="footer-name-row">
+                <span class="footer-site-name">Thomas Richardson</span>
+            </div>
+            <p class="footer-clock">
+                <span id="footer-clock"></span>
+                <span id="theme-visual"></span>
+            </p>
+            <p class="footer-clock">
+                <span class="tokyo-clock-wrap"><span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>: <span id="tokyo-clock"></span></span>
+                <span id="tokyo-theme-visual"></span>
+            </p>
+            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 7.2026</p>
+            <p class="footer-copy"><a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link">Open Source Licensing</a> &middot; <a href="https://github.com/thomvrich/portfolio" target="_blank" rel="noopener noreferrer" class="license-link">Changelog</a></p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-nav-section">
+                <h4 class="footer-section-heading">Navigation</h4>
+                <div class="footer-nav-links">
+                    <a href="index.html">My Work</a>
+                    <a href="about.html">About</a>
+                    <a href="lab.html">Lab</a>
+                    <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                </div>
+            </div>
+            <div class="footer-connect-section">
+                <h4 class="footer-section-heading">Let's Connect!</h4>
+                <div class="footer-contact-links">
+                    <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <button onclick="copyEmail()" id="emailBtn">
+                        <span id="emailText">thomasrichardson.contact@gmail.com</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Vercel Web Analytics (privacy-friendly, cookieless) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

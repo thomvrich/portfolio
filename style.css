@@ -22,6 +22,16 @@
 
   --font-headings: 'Josefin Sans', sans-serif;
   --font-body: 'Open Sans', sans-serif;
+  --font-jp: 'Noto Sans JP', sans-serif;
+}
+
+/* ── Japanese text — always Noto Sans JP, never an afterthought ──
+   Applies to anything tagged lang="ja" plus the JS-injected greeting,
+   so current and future Japanese picks it up automatically. */
+:lang(ja),
+.jp-label,
+#hero-greeting-text {
+  font-family: var(--font-jp);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -240,6 +250,22 @@ main {
   display: block;
 }
 
+/* Shrink the hero icon pair progressively so the two halves never
+   overflow the width — from desktop down through tablet/landscape. */
+@media (max-width: 1180px) {
+  .hero-bg-icon {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-bg-icon {
+    width: 175px;
+    height: 175px;
+  }
+}
+
 .hero-left {
   position: relative;
   z-index: 1;
@@ -284,7 +310,8 @@ main {
 }
 
 #hero-greeting-text:hover::after,
-.jp-label:hover::after {
+.jp-label:hover::after,
+.jp-label:focus::after {
   content: ' (' attr(data-translation) ')';
 }
 
@@ -358,6 +385,692 @@ main {
   align-items: start;
 }
 
+/* ── Design System ── */
+#ds-section {
+  padding: 48px 0 72px;
+}
+
+.ds-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Principles intro ── */
+.ds-principles {
+  margin-bottom: 20px;
+  padding: 32px;
+  background: var(--bg-card);
+  border-radius: 16px;
+}
+
+.ds-principles-heading {
+  margin-bottom: 12px;
+}
+
+.ds-principles-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  max-width: 780px;
+  margin-bottom: 28px;
+}
+
+.ds-principles-navy { color: var(--tech-header-bg); }
+.ds-principles-rust { color: var(--ad-header-bg); }
+
+.ds-principle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ds-principle h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.ds-principle p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .ds-principle-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ── Spacing & Scale specimens ── */
+/* Type scale — bars sized to each step */
+.comp-demo-scale,
+.comp-demo-spacing {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.scale-row,
+.space-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.scale-bar {
+  height: var(--scale-size);
+  width: var(--scale-size);
+  flex-shrink: 0;
+  background: var(--ad-header-bg);
+  border-radius: 4px;
+}
+
+.scale-label,
+.space-row .comp-icon-label {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+/* Corner radius — three sample squares */
+.comp-demo-radius {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  padding: 28px 24px;
+}
+
+.radius-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.radius-swatch {
+  width: 64px;
+  height: 64px;
+  background: var(--tech-header-bg);
+  display: block;
+}
+
+/* Spacing rhythm — bars sized to each step */
+.space-bar {
+  height: 16px;
+  width: var(--space);
+  flex-shrink: 0;
+  background: var(--ad-header-bg);
+  border-radius: 3px;
+}
+
+/* ── Accessibility inline note ── */
+.comp-a11y-note {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-top: -8px;
+  margin-bottom: 20px;
+  padding-left: 14px;
+  border-left: 3px solid var(--gray-300);
+}
+
+.comp-a11y-note code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--gray-200);
+  color: var(--text-main);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ── Swatch carousel ── */
+.swatch-carousel {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.swatch-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow-x: clip;   /* crop the track horizontally… */
+  overflow-y: visible; /* …but let tooltips escape upward */
+  padding-top: 48px;   /* headroom so tooltips aren't clipped by the card */
+  margin-top: -48px;   /* pull layout back so the padding doesn't add space */
+}
+
+.swatch-track {
+  display: flex;
+  gap: 12px;
+  transition: transform 0.35s ease;
+}
+
+/* 5 swatches per page: each takes 1/5 of the viewport,
+   minus its share of the 4 inter-swatch gaps. */
+.swatch {
+  position: relative;
+  flex: 0 0 calc((100% - 48px) / 5);
+  aspect-ratio: 1 / 1;
+  background-color: var(--swatch);
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.16);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px;
+  cursor: default;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.swatch:hover,
+.swatch:focus {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.24);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.swatch-hex {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.swatch-tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  --tip-shift: 0px;
+  transform: translateX(calc(-50% + var(--tip-shift)));
+  width: max-content;
+  max-width: 180px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-align: center;
+  padding: 7px 10px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.swatch-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  /* Counter the body's shift so the arrow still points at the swatch center */
+  transform: translateX(calc(-50% - var(--tip-shift)));
+  border: 5px solid transparent;
+  border-top-color: rgba(15, 23, 42, 0.95);
+}
+
+.swatch:hover .swatch-tip,
+.swatch:focus .swatch-tip,
+.swatch:focus-within .swatch-tip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.swatch-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--tech-cta-bg);
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+/* Arrow SVGs are dark by default — invert to white on the navy button */
+.swatch-arrow-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.swatch-arrow:hover {
+  background: var(--tech-cta-hover);
+}
+
+.swatch-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.swatch-page-label {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .swatch {
+    flex: 0 0 calc((100% - 24px) / 3);  /* 3 per page on tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .swatch {
+    flex: 0 0 calc((100% - 12px) / 2);  /* 2 per page on mobile */
+  }
+}
+
+/* ── Typography specimen ── */
+.type-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.type-half {
+  min-width: 0;
+}
+
+.type-family {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+/* Each family label renders in its own font */
+.type-half:has(.type-scale-josefin) .type-family { font-family: var(--font-headings); }
+.type-half:has(.type-scale-open)    .type-family { font-family: var(--font-body); }
+
+/* Info marker + tooltip beside each font heading */
+.type-info {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  vertical-align: middle;
+  cursor: help;
+  outline: none;
+}
+
+.type-info-icon {
+  width: 15px;
+  height: 15px;
+  /* Dark SVG → muted blue-gray, brightening on hover/focus */
+  filter: brightness(0) saturate(100%) invert(38%) sepia(12%) saturate(1100%) hue-rotate(178deg) brightness(92%) contrast(88%);
+  opacity: 0.75;
+  transition: opacity 0.18s ease, filter 0.18s ease;
+}
+
+.type-info:hover .type-info-icon,
+.type-info:focus .type-info-icon {
+  opacity: 1;
+  /* to deep navy --text-main */
+  filter: brightness(0) saturate(100%) invert(12%) sepia(30%) saturate(1600%) hue-rotate(185deg) brightness(94%) contrast(95%);
+}
+
+.type-tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 220px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.4;
+  text-align: left;
+  padding: 8px 11px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.type-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(15, 23, 42, 0.95);
+}
+
+.type-info:hover .type-tip,
+.type-info:focus .type-tip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.type-role {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.type-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--gray-200);
+  padding-top: 18px;
+}
+
+.type-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.type-sample {
+  color: var(--text-main);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.type-scale-josefin .type-sample { font-family: var(--font-headings); font-weight: 700; }
+.type-scale-open    .type-sample { font-family: var(--font-body); }
+
+.type-h1    { font-size: 2rem;     }  /* 32px */
+.type-h2    { font-size: 1.75rem;  }  /* 28px */
+.type-h3    { font-size: 1.5rem;   }  /* 24px */
+.type-h4    { font-size: 1.25rem;  }  /* 20px */
+.type-body  { font-size: 1rem;     }  /* 16px */
+.type-small { font-size: 0.875rem; }  /* 14px — nav, buttons, badges, footer */
+.type-semibold { font-weight: 600; }  /* Open Sans semibold */
+
+.type-spec {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Full-width Japanese specimen under both halves */
+.type-jp {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 2px solid var(--gray-200);
+}
+
+.type-scale-jp .type-sample { font-family: var(--font-jp); }
+.type-scale-jp .type-semibold { font-weight: 700; }
+
+@media (max-width: 600px) {
+  .type-split {
+    grid-template-columns: 1fr;  /* stack the two halves on narrow screens */
+    gap: 28px;
+  }
+}
+
+/* ── Component specimens ── */
+.comp-group + .comp-group {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.comp-group-title {
+  font-family: var(--font-headings);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.comp-group-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.comp-group-desc code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.82em;
+  background: var(--gray-200);
+  color: var(--text-main);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* Live specimen well */
+.comp-demo {
+  display: flex;
+  justify-content: center;
+  padding: 28px 24px;
+  background: var(--bg-global);
+  border-radius: 12px;
+}
+
+.comp-demo-column {
+  width: 100%;
+  max-width: 360px;
+}
+
+/* Sub-part heading within a component group */
+.comp-subtitle {
+  font-family: var(--font-headings);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 28px 0 6px;
+}
+
+
+/* Swap the whole column to rust when flipped */
+.comp-demo-column.creative-column .btn-project-tech {
+  background-color: var(--ad-cta-bg);
+}
+.comp-demo-column.creative-column .btn-project-tech:hover {
+  background-color: var(--ad-cta-hover);
+}
+
+/* Placeholder image block for the sample card */
+.comp-card-placeholder {
+  height: 75px;
+  background: linear-gradient(135deg, var(--gray-300), var(--gray-200));
+}
+
+/* Button, badge & link specimen rows */
+.comp-demo-buttons,
+.comp-demo-badges,
+.comp-demo-links {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+}
+
+/* Link specimens — reproduce each link style on the light well */
+.comp-links-nav a {
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.comp-links-nav a:hover {
+  color: var(--ad-header-bg);
+}
+
+/* License link is muted gray for the dark footer — darken it for the light well */
+.comp-links-license .license-link {
+  color: var(--text-muted);
+}
+.comp-links-license .license-link:hover {
+  color: var(--text-main);
+}
+
+/* Show the normally-hidden skip link inline in the specimen */
+.comp-skip-demo.skip-link {
+  position: static;
+  left: auto;
+  top: auto;
+}
+
+.comp-btn-row,
+.comp-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;   /* wrap the label under the button on narrow screens */
+}
+
+.comp-btn-label,
+.comp-badge-row .comp-btn-label {
+  min-width: 0;      /* allow long labels to shrink/wrap instead of overflowing */
+}
+
+.comp-badge-row > .status-badge,
+.comp-badge-row > .card-date {
+  flex-shrink: 0;
+}
+
+.comp-btn-row > .btn-project-tech,
+.comp-btn-row > .btn-project-ad,
+.comp-btn-row > .cta-btn {
+  flex-shrink: 0;
+}
+
+.comp-btn-label {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Marquee specimen — extra vertical room for icons + hover labels */
+.comp-demo-marquee {
+  display: block;
+  padding: 36px 12px;
+}
+
+/* Live-clock specimen — footer clocks live on dark, so recolor for the light well */
+.comp-demo-clocks {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.comp-demo-clocks .footer-clock {
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+/* Hover-to-translate specimen */
+.comp-demo-hover {
+  justify-content: center;
+  padding: 28px 24px;
+  font-size: 1.5rem;
+}
+
+/* Copy-email specimen — dark well so the footer button shows in its native color */
+.comp-demo-copy {
+  justify-content: center;
+  background: var(--tech-header-bg);
+}
+
+/* Icon specimen grid */
+.comp-demo-icons {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  padding: 28px 24px;
+}
+
+.comp-icon-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 72px;
+}
+
+/* Source icons are a mix of dark and white — normalize all to deep navy */
+.comp-icon {
+  width: 26px;
+  height: 26px;
+  filter: brightness(0) saturate(100%) invert(12%) sepia(30%) saturate(1600%) hue-rotate(185deg) brightness(94%) contrast(95%);
+}
+
+/* Brand halves keep their real navy/rust color — no normalizing filter */
+.comp-icon-brand {
+  filter: none;
+}
+
+/* Moon/sun icons use currentColor, which <img> can't inherit — apply the
+   same muted blue-gray filter the footer clocks use so they match the site. */
+.comp-icon-moon {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(10%) saturate(440%) hue-rotate(183deg) brightness(101%) contrast(90%);
+}
+
+.comp-icon-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.comp-copy-links button {
+  color: var(--gray-50);
+}
+
+.comp-copy-links button:hover {
+  color: var(--gray-300);
+}
+
+/* Flip toggle */
+.comp-flip-btn {
+  display: block;
+  margin: 16px auto 0;
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: var(--gray-200);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.comp-flip-btn:hover {
+  background: var(--gray-300);
+}
+
 /* ── Columns ── */
 .column {
   border-radius: 16px;
@@ -402,6 +1115,21 @@ main {
   border-radius: 8px;
   flex-shrink: 0;
   background-color: var(--gray-300);
+}
+
+/* Split Brain card — the two logo halves as the card media */
+.sb-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--bg-global);
+}
+
+.sb-card-half {
+  width: 128px;
+  height: 128px;
+  display: block;
 }
 
 .project-card h4 {
@@ -495,6 +1223,24 @@ main {
   color: var(--text-muted);
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* Soft "breathing" pulse to signal a pending / upcoming state */
+.status-pulse {
+  display: inline-block;
+  animation: statusPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-pulse {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 
@@ -1000,6 +1746,29 @@ footer {
     padding: 36px 24px;
   }
 
+  /* Hero — scale down for phones */
+  #hero-section {
+    min-height: auto;
+    padding: 48px 0 64px;
+  }
+
+  .hero-name {
+    font-size: 2.25rem;   /* 48px → 36px */
+  }
+
+  .hero-greeting {
+    font-size: 1.25rem;   /* 24px → 20px */
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+
+  .hero-bg-icon {
+    width: 125px;
+    height: 125px;
+  }
+
 }
 
 /* ── Responsive: small phones (≤ 480px) ── */
@@ -1011,9 +1780,97 @@ footer {
   footer {
     padding: 32px 16px;
   }
+
+  .hero-name {
+    font-size: 1.875rem;  /* 30px on small phones */
+  }
+
+  .hero-bg-icon {
+    width: 75px;
+    height: 75px;
+  }
 }
 
 /* ── Case study page ── */
+/* ── Sticky nav — project pages only (Split Brain & Math Center) ── */
+.case-study-page header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding-top: 24px;
+  padding-bottom: 12px;
+  box-shadow: 0 1px 0 var(--gray-200);
+}
+
+.section-nav {
+  position: sticky;
+  top: 84px;                 /* sits just under the sticky header */
+  z-index: 999;
+  /* Frosted glass: content scrolling underneath blurs through, so the
+     rust card headers passing behind read as soft rather than intrusive. */
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.section-nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 60px;
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scrollbar-width: none;      /* Firefox */
+}
+
+/* Soft fade at the left/right ends so overflowing links dissolve at the edges
+   (most visible on narrow screens where the nav scrolls horizontally). */
+.section-nav-inner {
+  mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+}
+.section-nav-inner::-webkit-scrollbar { display: none; }  /* WebKit */
+
+.section-nav-inner a {
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.section-nav-inner a:hover,
+.section-nav-inner a.is-active {
+  color: var(--text-main);
+  border-bottom-color: var(--ad-header-bg);
+}
+
+/* Offset anchored sections so they aren't hidden behind the two sticky bars */
+.case-study-page [id] {
+  scroll-margin-top: 140px;
+}
+
+@media (max-width: 768px) {
+  /* On phones, drop the sticky chrome entirely: the section-nav is hidden
+     and the header scrolls away normally, so nothing eats screen space. */
+  .section-nav {
+    display: none;
+  }
+  .case-study-page header {
+    position: static;
+  }
+  /* No sticky bars on mobile, so anchored sections need no offset. */
+  .case-study-page [id] {
+    scroll-margin-top: 0;
+  }
+}
+
 .case-study-page main {
   max-width: 900px;
   padding: 48px 60px 80px;
