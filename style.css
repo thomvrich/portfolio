@@ -961,6 +961,9 @@ main {
 .comp-badge-row > .status-badge,
 .comp-badge-row > .card-date {
   flex-shrink: 0;
+  /* Soft shadow so badges lift off the well — especially "Presented",
+     whose background matches the demo well and would otherwise blend in. */
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.14);
 }
 
 .comp-btn-row > .btn-project-tech,
@@ -1256,6 +1259,10 @@ main {
 #split-brain {
   padding: 48px 0 72px;
   text-align: center;
+}
+
+.split-brain-cta {
+  margin-top: 20px;
 }
 
 .split-brain-icons {
@@ -1583,6 +1590,8 @@ footer {
   height: 14px;
   vertical-align: middle;
   margin-left: 4px;
+  /* Material open_in_new ships dark; invert to white for the colored buttons */
+  filter: brightness(0) invert(1);
 }
 
 .flag-icon {
