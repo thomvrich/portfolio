@@ -26,13 +26,11 @@
 }
 
 /* ── Debug: outline every element in red to check alignment ──
-   Uncomment the rule below to see the layout grid lines; comment
-   it back out when you're done.
-
-* {
+   Comment the rule below back out when you're done. */
+/* {
   outline: 1px solid rgba(255, 0, 0, 0.4);
-}
-*/
+}*/
+
 
 /* ── Japanese text — always Noto Sans JP, never an afterthought ──
    Applies to anything tagged lang="ja" plus the JS-injected greeting,
@@ -1284,7 +1282,10 @@ main {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-top: 4px;
+  /* Push the action to the bottom of the card so buttons align across a row
+     even when cards have different content heights (taller media/copy). */
+  margin-top: auto;
+  padding-top: 4px;
 }
 
 .card-meta {
