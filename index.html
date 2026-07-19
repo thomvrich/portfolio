@@ -74,101 +74,85 @@
             <div class="work-intro">
                 <h2>My Work</h2>
                 <p>My work sits at the intersection of user research, design, and strategy — spanning product design, UX, and advertising projects all centered on <strong>understanding people and solving their problems.</strong></p>
-                <br>
                 <p><em>If you're short on time, I would recommend starting with the Math Center Kiosk Redesign. It's the project that best represents how I actually work: finding a real problem, designing a solution, and shipping it.</em></p>
             </div>
-            <div class="project-grid">
-                <!-- Technical Column -->
-                <div class="column tech-column">
-                    <div class="column-header">
-                        <h3>Technical</h3>
+            <div class="folder" id="workFolder">
+                <div class="folder-tabs" role="tablist" aria-label="Work categories">
+                    <button type="button" class="folder-tab folder-tab-tech is-active" id="tabTechnical" role="tab" aria-selected="true" aria-controls="panelTechnical">Technical</button>
+                    <button type="button" class="folder-tab folder-tab-ad" id="tabAdvertising" role="tab" aria-selected="false" aria-controls="panelAdvertising" tabindex="-1">Advertising</button>
+                </div>
+
+                <div class="folder-body">
+                    <!-- Technical Panel -->
+                    <div class="folder-panel folder-grid-2 is-active column tech-column" id="panelTechnical" role="tabpanel" aria-labelledby="tabTechnical">
+
+                        <div class="project-card">
+                            <video src="assets/mc-demo-2.mp4" class="card-img" width="1036" height="720" autoplay loop muted playsinline aria-label="Looping demo of the redesigned Math Center check-in kiosk" style="height: auto !important; aspect-ratio: unset !important;"></video>
+                            <h4>Math Center Kiosk Redesign</h4>
+                            <div class="card-meta">
+                                <span class="card-date">Fall 2025</span>
+                                <span class="status-badge status-in-review">In Review</span>
+                            </div>
+                            <p>While working at the front desk at the Math Center, I realized students were struggling to understand the kiosk interface. Using Claude and two years of first-hand user research, I created a rapid prototype for a more intuitive user experience, adding clear copy, UI updates, and improved accessibility.</p>
+                            <div class="card-actions">
+                                <a href="math-center.html" class="btn-project-tech">View Case Study</a>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <img src="assets/vivacity-tech.jpg" alt="Vivacity Tech PBC" class="card-img" width="600" height="600" loading="lazy">
+                            <h4>Vivacity Tech PBC</h4>
+                            <div class="card-meta">
+                                <span class="card-date">Spring 2026</span>
+                                <span class="status-badge status-shipped">Shipped</span>
+                            </div>
+                            <p>During my time as a product design intern at Vivacity Tech PBC, I redesigned 30+ modals for its Dream 3.0 software. In addition to that, I also created and maintained 5 components with 100+ variants.</p>
+                            <div class="card-actions">
+                                <a href="vivacity.html" class="btn-project-tech">View Case Study</a>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <img src="assets/sb_ds.jpg" alt="Split Brain Design System" class="card-img" width="600" height="600" loading="lazy">
+                            <h4>Split Brain Design System</h4>
+                            <div class="card-meta">
+                                <span class="card-date">Summer 2026</span>
+                                <span class="status-badge status-shipped">Shipped</span>
+                            </div>
+                            <p>The design system behind this website, documented as its own page. It catalogs the colors, type, components, and interactions the portfolio actually uses. It's built to be honest by default, with accessibility and a live, interactive spec throughout.</p>
+                            <div class="card-actions">
+                                <a href="design-system.html" class="btn-project-tech">View Design System</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="project-card">
-                        <video src="assets/mc-demo-2.mp4" class="card-img" width="1036" height="720" autoplay loop muted playsinline aria-label="Looping demo of the redesigned Math Center check-in kiosk" style="height: auto !important; aspect-ratio: unset !important;"></video>
-                        <h4>Math Center Kiosk Redesign</h4>
-                        <div class="card-meta">
-                            <span class="card-date">Fall 2025</span>
-                            <span class="status-badge status-in-review">In Review</span>
-                        </div>
-                        <p>While working at the front desk at the Math Center, I realized students were struggling to understand the kiosk interface. Using Claude and two years of first-hand user research, I created a rapid prototype for a more intuitive user experience, adding clear copy, UI updates, and improved accessibility.</p>
-                        <div class="card-actions">
-                            <a href="math-center.html" class="btn-project-tech">View Case Study</a>
-                        </div>
-                    </div>
+                    <!-- Advertising Panel -->
+                    <div class="folder-panel folder-grid-2 column creative-column" id="panelAdvertising" role="tabpanel" aria-labelledby="tabAdvertising" hidden>
 
-                    <div class="project-card">
-                        <div class="card-img sb-card-media" aria-hidden="true">
-                            <img src="assets/icons/sb-navy.svg" alt="" class="sb-card-half">
-                            <img src="assets/icons/sb-rust.svg" alt="" class="sb-card-half">
+                        <div class="project-card">
+                            <img src="assets/admedia.JPG" alt="Ralph Lauren Media Plan" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;"  class="card-img" width="1920" height="1080" loading="lazy">
+                            <h4>Ralph Lauren Media Plan</h4>
+                            <div class="card-meta">
+                                <span class="card-date">Spring 2026</span>
+                                <span class="status-badge status-first-place">1st Place</span>
+                            </div>
+                            <p>I worked on a team of 9 to create a comprehensive media plan for Ralph Lauren as part of a class project. I contributed to the research and budget, and crafted a buyer persona. Our team placed first out of five teams and was dubbed "Agency Ready" by an industry professional.</p>
+                            <div class="card-actions">
+                                <a href="documents/admediapres.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/open_in_new.svg" alt="" class="link-icon"></a>
+                            </div>
                         </div>
-                        <h4>Split Brain Design System</h4>
-                        <div class="card-meta">
-                            <span class="card-date">Summer 2026</span>
-                            <span class="status-badge status-shipped">Shipped</span>
-                        </div>
-                        <p>The design system behind this website, documented as its own page. It catalogs the colors, type, components, and interactions the portfolio actually uses. It's built to be honest by default, with accessibility and a live, interactive spec throughout.</p>
-                        <div class="card-actions">
-                            <a href="design-system.html" class="btn-project-tech">View Design System</a>
-                        </div>
-                    </div>
-                 <!--   <div class="project-card">
-                        <img src="assets/vivacity-tech.jpg" alt="Vivacity Tech PBC" class="card-img" width="600" height="600" loading="lazy">
-                        <h4>Vivacity Tech PBC</h4>
-                        <div class="card-meta">
-                            <span class="card-date">Spring 2026</span>
-                            <span class="status-badge status-in-review">In Review</span>
-                        </div>
-                        <p>During my time as a product design intern at Vivacity Tech PBC, I redesigned 20+ modals for its Dream 3.0 software. In addition to that, I also created and maintained 5 components with 100+ variants.</p>
-                        <div class="card-actions">
-                            <a href="https://www.vivacitytech.com/" target="_blank" rel="noopener noreferrer" class="btn-project-tech btn-coming-soon"><span class="status-pulse">Coming Soon</span></a>
-                        </div>
-                    </div> -->
-                    <div class="project-card">
-                        <video src="assets/pokemon-demo.mp4" class="card-img" autoplay loop muted playsinline aria-label="Looping demo of the interactive Pokédex web app"></video>
-                        <h4>Interactive Pokédex</h4>
-                        <div class="card-meta">
-                            <span class="card-date">Fall 2025</span>
-                            <span class="status-badge status-shipped">Shipped</span>
-                        </div>
-                        <p>I attended a Hacklahoma event where we watched a presentation about vibe coding. Afterward, we were tasked with creating something Pokémon-related in 30 minutes. This project features all 251 Pokémon from the Kanto and Johto regions.</p>
-                        <div class="card-actions">
-                            <a href="https://thomvrich.github.io/pokedex/" target="_blank" rel="noopener noreferrer" class="btn-project-tech">View Project<img src="assets/icons/open_in_new.svg" alt="" class="link-icon"></a>
+                        <div class="project-card">
+                            <img src="assets/advertising-research.jpg" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;" alt="Advertising Research Final Project" class="card-img" width="1920" height="1080" loading="lazy">
+                            <h4>Gray Owl Coffee Research Report</h4>
+                            <div class="card-meta">
+                                <span class="card-date">Fall 2025</span>
+                                <span class="status-badge status-presented">Presented</span>
+                            </div>
+                            <p>I worked on a team of 6 to conduct research and provide recommendations to increase Gray Owl Coffee's market share in the Norman, OK area for a class project. Using MRI Simmons data, I created a target-prospect analysis using demographics and psychographics to determine whom the coffee shop should focus on.</p>
+                            <div class="card-actions">
+                                <a href="documents/adresearchpres.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/open_in_new.svg" alt="" class="link-icon"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Advertising Column -->
-                <div class="column creative-column">
-                    <div class="column-header">
-                        <h3>Advertising</h3>
-                    </div>
-
-                    <div class="project-card">
-                        <img src="assets/ralph-lauren-media-plan.webp" alt="Ralph Lauren Media Plan" class="card-img" width="1200" height="1800" loading="lazy">
-                        <h4>Ralph Lauren Media Plan</h4>
-                        <div class="card-meta">
-                            <span class="card-date">Spring 2026</span>
-                            <span class="status-badge status-first-place">1st Place</span>
-                        </div>
-                        <p>I worked on a team of 9 to create a comprehensive media plan for Ralph Lauren as part of a class project. I contributed to the research and budget, and crafted a buyer persona. Our team placed first out of five teams and was dubbed "Agency Ready" by an industry professional.</p>
-                        <div class="card-actions">
-                            <a href="documents/admediapres.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/open_in_new.svg" alt="" class="link-icon"></a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="assets/advertising-research.jpg" style="width: 100% !important; height: auto !important; aspect-ratio: 16 / 9 !important;" alt="Advertising Research Final Project" class="card-img" width="1920" height="1080" loading="lazy">
-                        <h4>Gray Owl Coffee Research Report</h4>
-                        <div class="card-meta">
-                            <span class="card-date">Fall 2025</span>
-                            <span class="status-badge status-presented">Presented</span>
-                        </div>
-                        <p>I worked on a team of 6 to conduct research and provide recommendations to increase Gray Owl Coffee's market share in the Norman, OK area for a class project. Using MRI Simmons data, I created a target-prospect analysis using demographics and psychographics to determine whom the coffee shop should focus on.</p>
-                        <div class="card-actions">
-                            <a href="documents/adresearchpres.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-ad">View Presentation<img src="assets/icons/open_in_new.svg" alt="" class="link-icon"></a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
         <section id="cta-section">

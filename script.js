@@ -412,3 +412,45 @@ function initSectionNav() {
 }
 
 document.addEventListener('DOMContentLoaded', initSectionNav);
+
+function initWorkFolder() {
+    const folder = document.getElementById('workFolder');
+    if (!folder) return;
+
+    const tabs = Array.from(folder.querySelectorAll('.folder-tab'));
+    const panels = {
+        tabTechnical: document.getElementById('panelTechnical'),
+        tabAdvertising: document.getElementById('panelAdvertising'),
+    };
+
+    function activate(tab) {
+        tabs.forEach((t) => {
+            const isActive = t === tab;
+            t.classList.toggle('is-active', isActive);
+            t.setAttribute('aria-selected', String(isActive));
+            t.tabIndex = isActive ? 0 : -1;
+        });
+
+        Object.entries(panels).forEach(([id, panel]) => {
+            if (!panel) return;
+            const isActive = id === tab.id;
+            panel.classList.toggle('is-active', isActive);
+            panel.hidden = !isActive;
+        });
+
+        folder.dataset.active = tab.id === 'tabAdvertising' ? 'advertising' : 'technical';
+    }
+
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => activate(tab));
+        tab.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+            e.preventDefault();
+            const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+            next.focus();
+            activate(next);
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initWorkFolder);

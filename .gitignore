@@ -3,5 +3,10 @@
 
 # Editor/IDE tooling — not part of the site
 .cursor/
+.claude/
 .githooks/
 .vscode/
+
+# Internal docs & WIP — not part of the shipped site
+PRODUCT.md
+gambling/

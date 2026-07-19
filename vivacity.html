@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivacity Tech PBC — Thomas Richardson</title>
+<!-- SEO -->
+<meta name="description" content="Product design internship case study: Thomas Richardson's work on Vivacity Tech's Dream 3.0 design system, including reusable components and a modal system redesign.">
+<meta name="author" content="Thomas Richardson">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thomasvrichardson.me/vivacity.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thomasvrichardson.me/vivacity.html">
+<meta property="og:title" content="Vivacity Tech PBC — Thomas Richardson">
+<meta property="og:description" content="Product design internship case study: building reusable components and redesigning the modal system for Vivacity Tech's Dream 3.0 design system.">
+<meta property="og:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Thomas Richardson">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://thomasvrichardson.me/vivacity.html">
+<meta name="twitter:title" content="Vivacity Tech PBC — Thomas Richardson">
+<meta name="twitter:description" content="Product design internship case study: building reusable components and redesigning the modal system for Vivacity Tech's Dream 3.0 design system.">
+<meta name="twitter:image" content="https://thomasvrichardson.me/assets/og-preview.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Noto+Sans+JP:wght@400;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/icons/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon/favicon.svg">
+    <link rel="shortcut icon" href="assets/icons/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/icons/favicon/site.webmanifest">
+</head>
+<body class="case-study-page">
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="header-brand">
+            <a href="index.html"><h1>Thomas Richardson</h1></a>
+        </div>
+        <nav>
+            <a href="index.html">My Work</a>
+            <a href="about.html">About</a>
+            <a href="lab.html">Lab</a>
+            <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
+    </header>
+
+    <nav class="section-nav" aria-label="On this page">
+        <div class="section-nav-inner">
+            <a href="#vt-context">Context</a>
+            <a href="#vt-upload">FileUploadBlock</a>
+            <a href="#vt-modals">Modal System</a>
+            <a href="#vt-components">Components</a>
+            <a href="#vt-reflection">Takeaways</a>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <section class="case-study-hero">
+            <h2>Vivacity Tech PBC</h2>
+            <p class="case-study-subtitle">Dream 3.0 · Product Design Intern</p>
+            <p class="case-study-subtitle">Estimated Read Time: 3 minutes</p>
+            <div class="vt-stat-row">
+                <span class="status-badge status-in-review">2 Core Designers</span>
+                <span class="status-badge status-in-review">30+ Modals Redesigned</span>
+                <span class="status-badge status-shipped">Components Still in Active Use</span>
+            </div>
+        </section>
+
+        <article>
+            <section class="case-study-section" id="vt-context">
+                <h2>Context</h2>
+                <p>I joined Vivacity Tech PBC (EdTech) as a Product Design Intern, joining a supervisor and junior duo. I contributed to Dream 3.0, its education asset (Chromebooks) management system. My workflow consisted of completing Jira tickets by creating and maintaining the design system's assets in Figma. <strong>My key deliverables were the 30+ modals that I redesigned — several of them multi-step flows — and the creation and maintenance of 5+ components within the design system.</strong> The components I built are still actively used by the design team today and the modals are still in development.</p>
+            </section>
+
+            <section class="case-study-section" id="vt-upload">
+                <h2>FileUploadBlock</h2>
+                <p>The FileUploadBlock is my favorite thing I built at Vivacity, and rebuilding it for this site is where I noticed something. In the original, the "uploading" stage showed "4/4 Files" the whole time — before a single file had actually finished uploading. Recreating it here for the demo, I realized I'd rather it count up honestly, 1/4 then 2/4 as each file completes, than look finished before it is. So that's how I built it this time. It's a minor change, and one I made for myself, but it's the kind of detail I now can't unsee with a fresh pair of eyes.</p>
+                <p>Some other changes I made between versions: on the Uploaded state I added a running count ("Uploaded — N File(s)") so users can see how many files finished uploading, matching the count the Uploading state already shows. I also switched "files" to "File(s)" throughout, so the labels stay grammatically correct when someone uploads just one file. I also dropped the dashes in the border as I could not get the CSS just right when making the demo below.</p>
+                <p>I was tasked with this component near the end of my internship. I built it from two base components I made first, what I call the "Percent Bar" and the "File Uploader." I then composed the upload button, the uploading state, and the modified uploaded state on top of them, with the drag-and-drop added last. I enjoyed it enough that I rebuilt the whole thing a second time inside my own design system; it was one of the first components where I felt genuinely comfortable in Figma and in Vivacity's system.</p>
+                <p class="vt-recreation-note">Try it out! This is an interactive demo. Nothing you drop or select is uploaded or saved; the files never leave your browser.</p>
+
+                <div class="vt-upload-entry-row">
+                    <button type="button" class="btn-project-tech vt-upload-btn" id="vtUploadBtn">
+                        <img src="assets/icons/file_upload.svg" alt="" class="vt-upload-btn-icon">
+                        Upload Files
+                    </button>
+                    <div class="vt-dropzone" id="vtDropzone" tabindex="0" role="button" aria-label="Drag and drop files, or activate to choose files">
+                        <span class="vt-dropzone-icon" aria-hidden="true"></span>
+                        <p class="vt-dropzone-text">Drag and drop a file here or <span class="vt-dropzone-link">click to upload</span></p>
+                        <p class="vt-dropzone-hint">Accepted file types: .png, .jpg, .pdf</p>
+                    </div>
+                    <input type="file" id="vtFileInput" multiple hidden>
+                </div>
+
+                <div class="vt-file-section" id="vtUploadedSection" hidden>
+                    <div class="vt-file-section-header">
+                        <h3 class="vt-file-section-heading" id="vtUploadedHeading">Uploaded</h3>
+                        <button type="button" class="vt-clear-btn" id="vtClearBtn">Clear completed</button>
+                    </div>
+                    <div class="vt-file-list" id="vtUploadedList"></div>
+                </div>
+
+                <div class="vt-file-section" id="vtUploadingSection" hidden>
+                    <h3 class="vt-file-section-heading" id="vtUploadingHeading">Uploading</h3>
+                    <div class="vt-file-list" id="vtUploadingList"></div>
+                </div>
+
+                <div class="vt-figma-embed">
+                    <h3 class="vt-file-section-heading">FileUploadBlock — Figma File</h3>
+                    <div class="vt-figma-frame">
+                        <iframe src="https://embed.figma.com/design/vJAruy59nl04T8wxVvYNCa/File-Upload-Stack?node-id=0-1&embed-host=share" title="File Upload Stack — Figma design file" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section class="case-study-section" id="vt-modals">
+                <h2>Modal System Redesign</h2>
+                <p>My main project and deliverable from my time at Vivacity was redesigning the modals throughout the product. My understanding was that the team had just updated its design system, so my part was implementing it. I started by auditing the product to catalogue the modals. From there, I started the work slow and small before taking on more at a faster rate. As I progressed some were redesigned quickly while others had multiple workflows or steps. By the time I finished, I had over 30 modals.</p>
+                <figure class="case-study-figure vt-fig-95">
+                    <img src="assets/vt-images/vt-modals-scope.png" alt="A Figma canvas showing the full scope of the modal redesign — dozens of modal frames labeled with actions like create, edit, delete, upload, and add asset." class="case-study-img" loading="lazy">
+                    <figcaption>The scope of the modal redesign work. A screenshot of the 30+ modals I worked on.</figcaption>
+                </figure>
+                <figure class="case-study-figure vt-fig-50">
+                    <img src="assets/vt-images/vt-modal-before-after.png" alt="The Edit Ticket modal before and after the redesign. Before: a plain header and a single full-width purple Update button. After: an icon-badged header, cleaner fields, and a Cancel and Update Ticket button pair." class="case-study-img" loading="lazy">
+                    <figcaption>The Edit Ticket modal, before (top) and after (bottom) the redesign.</figcaption>
+                </figure>
+            </section>
+
+            <section class="case-study-section" id="vt-components">
+                <h2>Components</h2>
+                <p>Beyond the FileUploadBlock, I built and maintained a handful of reusable components for Dream, each with a full range of variants so the design team could drop them in without detaching. Two that I want to highlight are: <strong>LabelGroup</strong>, which packs one to eight labels into table and detail-card contexts, and <strong>IconCircle</strong>, which wraps an icon in a semantic color badge so status reads at a glance.</p>
+                <blockquote class="vt-closing-quote">
+                    <p>"One that has saved me a lot of time is the LabelGroup component you made. It is so handy to have that in table and detail card components so I don't have to detach just to add more labels."</p>
+                    <cite>— <a href="https://www.linkedin.com/in/kayla-marcus/" target="_blank" rel="noopener noreferrer">Kayla Marcus</a>, Junior UI/UX Designer at Vivacity Tech PBC, on the LabelGroup component</cite>
+                </blockquote>
+                <div class="vt-component-figs">
+                    <figure class="case-study-figure vt-crop-fig">
+                        <div class="vt-crop-window">
+                            <img src="assets/vt-images/vt-labelgroup-variants.png" alt="A selection of LabelGroup variants — filled and outline styles holding one through several labels, in horizontal and vertical orientations." class="vt-crop-img" loading="lazy">
+                        </div>
+                        <figcaption>LabelGroup, fill/outline and 1–8 labels, with horizontal and vertical variants.</figcaption>
+                    </figure>
+                    <figure class="case-study-figure vt-crop-fig">
+                        <div class="vt-crop-window">
+                            <img src="assets/vt-images/vt-iconcircle-variants.png" alt="A selection of IconCircle variants — a rocket icon shown in several semantic colors across a range of sizes." class="vt-crop-img" loading="lazy">
+                        </div>
+                        <figcaption>IconCircle, a range of sizes across every semantic color.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="case-study-section" id="vt-reflection">
+                <h2>Takeaways</h2>
+                <p>Working on the design team at Vivacity gave me experience in contributing to and working within a system rather than building from scratch on my own. Every component decision had to respect what already existed: the colors, the patterns, the conventions. That constraint is actually what makes design systems consistent and worth keeping around.</p>
+                <p>More than anything, this internship clarified what I want to do next. I'm good at implementing inside a system, but this internship also showed me I'm happier when I'm closer to the problem, where it gets found rather than handed to me. That's the part of the <a href="math-center.html">Math Center Kiosk</a> project I loved most: I noticed the problem myself, then designed the solution. That's what draws me toward product management.</p>
+            </section>
+
+        </article>
+
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="footer-name-row">
+                <span class="footer-site-name">Thomas Richardson</span>
+            </div>
+            <p class="footer-clock">
+                <span id="footer-clock"></span>
+                <span id="theme-visual"></span>
+            </p>
+            <p class="footer-clock">
+                <span class="tokyo-clock-wrap"><span class="jp-label" lang="ja" data-translation="Tokyo, Japan">東京,日本</span>: <span id="tokyo-clock"></span></span>
+                <span id="tokyo-theme-visual"></span>
+            </p>
+            <p class="footer-copy">&copy; 2026 Thomas Richardson &middot; Last Updated 7.2026</p>
+            <p class="footer-copy"><a href="https://docs.google.com/document/d/16V4528uCrrYZ_4m90_WsU16_pIoXTy917-zLf2wckFU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="license-link">Open Source Licensing</a> &middot; <a href="https://github.com/thomvrich/portfolio" target="_blank" rel="noopener noreferrer" class="license-link">Changelog</a></p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-nav-section">
+                <h4 class="footer-section-heading">Navigation</h4>
+                <div class="footer-nav-links">
+                    <a href="index.html">My Work</a>
+                    <a href="about.html">About</a>
+                    <a href="lab.html">Lab</a>
+                    <a href="documents/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                </div>
+            </div>
+            <div class="footer-connect-section">
+                <h4 class="footer-section-heading">Let's Connect!</h4>
+                <div class="footer-contact-links">
+                    <a href="https://www.linkedin.com/in/thomas-richardson-73a6ba322/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <button onclick="copyEmail()" id="emailBtn">
+                        <span id="emailText">thomasrichardson.contact@gmail.com</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Vercel Web Analytics (privacy-friendly, cookieless) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+    (function () {
+        const MAX_SIZE = 10 * 1024 * 1024; // 10MB
+        const dropzone = document.getElementById('vtDropzone');
+        const uploadBtn = document.getElementById('vtUploadBtn');
+        const fileInput = document.getElementById('vtFileInput');
+        const uploadingSection = document.getElementById('vtUploadingSection');
+        const uploadingHeading = document.getElementById('vtUploadingHeading');
+        const uploadingList = document.getElementById('vtUploadingList');
+        const uploadedSection = document.getElementById('vtUploadedSection');
+        const uploadedHeading = document.getElementById('vtUploadedHeading');
+        const uploadedList = document.getElementById('vtUploadedList');
+        const clearBtn = document.getElementById('vtClearBtn');
+
+        if (!dropzone || !fileInput) return;
+
+        let uploadingTotal = 0;   // files in the current batch (denominator)
+        let uploadedDone = 0;     // files finished so far (numerator, counts up)
+
+        function formatSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // Keeps the "Uploading - X/N Files" heading in sync (X counts up as
+        // files finish) and hides the section once nothing is left in flight.
+        function refreshUploading() {
+            const rows = uploadingList.querySelectorAll('.vt-file-row').length;
+            if (rows === 0) {
+                uploadingSection.hidden = true;
+                uploadingTotal = 0;
+                uploadedDone = 0;
+                return;
+            }
+            uploadingSection.hidden = false;
+            uploadingHeading.textContent = `Uploading - ${uploadedDone}/${uploadingTotal} File(s)`;
+        }
+
+        // Keeps the "Uploaded - N Files" heading in sync with however many
+        // completed rows are actually in the list (so it stays right through
+        // Clear completed as well).
+        function refreshUploaded() {
+            const count = uploadedList.querySelectorAll('.vt-file-row').length;
+            uploadedHeading.textContent = count > 0 ? `Uploaded - ${count} File(s)` : 'Uploaded';
+        }
+
+        function handleFiles(fileList) {
+            const files = Array.from(fileList);
+            if (!files.length) return;
+            uploadingTotal += files.length;
+            files.forEach(startUpload);
+            refreshUploading();
+        }
+
+        function startUpload(file) {
+            const row = document.createElement('div');
+            row.className = 'vt-file-row';
+
+            const tooLarge = file.size > MAX_SIZE;
+
+            row.innerHTML = `
+                <img src="assets/icons/file_present.svg" alt="" class="vt-file-icon">
+                <div class="vt-file-info">
+                    <div class="vt-file-meta">
+                        <span class="vt-file-name">${escapeHtml(file.name)}</span>
+                        <span class="vt-file-size">${formatSize(file.size)}</span>
+                    </div>
+                    <div class="vt-progress-track">
+                        <div class="vt-progress-fill${tooLarge ? ' vt-progress-error' : ''}" style="width: 0%"></div>
+                    </div>
+                    ${tooLarge ? '<p class="vt-file-error">File too large</p>' : ''}
+                </div>
+                <span class="vt-progress-pct">${tooLarge ? '' : '0%'}</span>
+                <button type="button" class="vt-file-cancel" aria-label="Cancel upload">
+                    <img src="assets/icons/close.svg" alt="">
+                </button>
+            `;
+
+            uploadingList.appendChild(row);
+
+            const cancelBtn = row.querySelector('.vt-file-cancel');
+            const fill = row.querySelector('.vt-progress-fill');
+            const pctLabel = row.querySelector('.vt-progress-pct');
+
+            if (tooLarge) {
+                fill.style.width = '100%';
+                cancelBtn.addEventListener('click', () => {
+                    row.remove();
+                    uploadingTotal = Math.max(0, uploadingTotal - 1);
+                    refreshUploading();
+                });
+                return;
+            }
+
+            // Scale the animation to file size (like a real upload) so a batch
+            // finishes one at a time instead of all at once — that's what makes
+            // the "X/N" counter visibly tick up. Clamped so tiny and huge files
+            // still land in a watchable 1.2s–4s window, plus a little jitter so
+            // two same-size files don't finish on the exact same frame.
+            const sizeMs = 1200 + (file.size / (1024 * 1024)) * 900;
+            const duration = Math.min(4000, sizeMs) + Math.random() * 400;
+            const start = performance.now();
+            let cancelled = false;
+
+            cancelBtn.addEventListener('click', () => {
+                cancelled = true;
+                row.remove();
+                uploadingTotal = Math.max(0, uploadingTotal - 1);
+                refreshUploading();
+            });
+
+            function tick(now) {
+                if (cancelled) return;
+                const elapsed = now - start;
+                const pct = Math.min(100, Math.round((elapsed / duration) * 100));
+                fill.style.width = pct + '%';
+                pctLabel.textContent = pct + '%';
+                if (pct < 100) {
+                    requestAnimationFrame(tick);
+                } else {
+                    row.remove();
+                    uploadedDone++;
+                    moveToUploaded(file);
+                    refreshUploading();
+                }
+            }
+            requestAnimationFrame(tick);
+        }
+
+        function moveToUploaded(file) {
+            uploadedSection.hidden = false;
+            const row = document.createElement('div');
+            row.className = 'vt-file-row vt-file-row-complete';
+            row.innerHTML = `
+                <img src="assets/icons/file_present.svg" alt="" class="vt-file-icon">
+                <div class="vt-file-info">
+                    <div class="vt-file-meta">
+                        <span class="vt-file-name">${escapeHtml(file.name)}</span>
+                        <span class="vt-file-size">${formatSize(file.size)}</span>
+                    </div>
+                    <div class="vt-progress-track">
+                        <div class="vt-progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+                <span class="vt-progress-pct">100%</span>
+            `;
+            uploadedList.appendChild(row);
+            refreshUploaded();
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        uploadBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+            fileInput.value = '';
+        });
+
+        dropzone.addEventListener('click', () => fileInput.click());
+        dropzone.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                fileInput.click();
+            }
+        });
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('vt-dropzone-active');
+        });
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('vt-dropzone-active');
+        });
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('vt-dropzone-active');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        clearBtn.addEventListener('click', () => {
+            uploadedList.innerHTML = '';
+            uploadedSection.hidden = true;
+            refreshUploaded();
+        });
+    })();
+    </script>
+
+</body>
+</html>

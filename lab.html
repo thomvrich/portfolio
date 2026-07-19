@@ -59,7 +59,15 @@
                 <h2>Lab</h2>
                 <p>Side projects and class assignments created for personal and academic purposes, not for commercial use.</p>
             </div>
-
+            <div class="lab-project">
+                <a href="https://thomvrich.github.io/pokedex/" target="_blank" rel="noopener noreferrer" class="lab-demo-card">
+                    <video src="assets/pokemon-demo.mp4" class="lab-demo-video" autoplay loop muted playsinline aria-label="Looping demo of the interactive Pokédex web app"></video>
+                    <div class="lab-demo-caption">
+                        <span class="lab-demo-title">Interactive Pokédex</span>
+                        <span class="lab-demo-link">View Project<img src="assets/icons/open_in_new.svg" alt="" class="link-icon"></span>
+                    </div>
+                </a>
+            </div>
             <div class="lab-project">
                 <div class="lab-ad-gallery">
                     <figure class="lab-ad-item">
@@ -118,77 +126,7 @@
         </div>
     </footer>
 
-    <!-- Media zoom lightbox -->
-    <div id="lab-zoom-overlay" class="lab-zoom-overlay" role="dialog" aria-modal="true" aria-label="Media preview">
-        <button class="lab-zoom-close" id="lab-zoom-close" aria-label="Close preview">✕</button>
-        <div id="lab-zoom-display"></div>
-    </div>
-
     <script src="script.js"></script>
-    <script>
-        (function () {
-            const overlay = document.getElementById('lab-zoom-overlay');
-            const display = document.getElementById('lab-zoom-display');
-            const closeBtn = document.getElementById('lab-zoom-close');
-
-            let lastFocused = null;
-
-            function openZoom(el) {
-                lastFocused = el;
-                display.innerHTML = '';
-                if (el.tagName === 'VIDEO') {
-                    const v = document.createElement('video');
-                    v.src = el.src;
-                    v.className = 'lab-zoom-media';
-                    v.autoplay = true;
-                    v.loop = true;
-                    v.muted = true;
-                    v.playsInline = true;
-                    v.controls = true;
-                    display.appendChild(v);
-                } else {
-                    const img = document.createElement('img');
-                    img.src = el.src;
-                    img.alt = el.alt;
-                    img.className = 'lab-zoom-media';
-                    display.appendChild(img);
-                }
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                closeBtn.focus();
-            }
-
-            function closeZoom() {
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-                display.innerHTML = '';
-                if (lastFocused) { lastFocused.focus(); lastFocused = null; }
-            }
-
-            overlay.addEventListener('click', closeZoom);
-            display.addEventListener('click', function (e) { e.stopPropagation(); });
-            closeBtn.addEventListener('click', function (e) { e.stopPropagation(); closeZoom(); });
-
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') closeZoom();
-            });
-
-            document.querySelectorAll('.lab-ad-item img, .lab-ad-item video').forEach(function (el) {
-                el.setAttribute('tabindex', '0');
-                el.setAttribute('role', 'button');
-                if (!el.getAttribute('aria-label')) {
-                    el.setAttribute('aria-label', (el.alt || 'Media') + ' — enlarge');
-                }
-                el.addEventListener('click', function () { openZoom(el); });
-                el.addEventListener('keydown', function (e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        openZoom(el);
-                    }
-                });
-            });
-        })();
-    </script>
 
     <!-- Vercel Web Analytics (privacy-friendly, cookieless) -->
     <script>

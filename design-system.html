@@ -257,7 +257,7 @@
                         </div>
                         <div class="comp-group">
                             <p class="comp-group-title">Corner Radius</p>
-                            <p class="comp-group-desc">Three rounding roles do most of the work: a gentle radius for small surfaces, a larger one for cards, and a full pill for badges and buttons.</p>
+                            <p class="comp-group-desc">A few rounding roles do most of the work: a gentle radius for small surfaces, a larger one for cards, a rounder still for large containers, and a full pill for badges and buttons. When one rounded element nests inside another, the inner corner steps down by 4px (<code>inner = outer − 4</code>) so the two curves stay concentric — a card at 12px holds an image at 8px.</p>
                             <div class="comp-demo comp-demo-radius">
                                 <div class="radius-cell">
                                     <span class="radius-swatch" style="border-radius: 4px;"></span>
@@ -270,6 +270,10 @@
                                 <div class="radius-cell">
                                     <span class="radius-swatch" style="border-radius: 12px;"></span>
                                     <span class="comp-icon-label">12px · cards</span>
+                                </div>
+                                <div class="radius-cell">
+                                    <span class="radius-swatch" style="border-radius: 16px;"></span>
+                                    <span class="comp-icon-label">16px · large containers</span>
                                 </div>
                                 <div class="radius-cell">
                                     <span class="radius-swatch" style="border-radius: 999px;"></span>

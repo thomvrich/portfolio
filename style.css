@@ -25,6 +25,15 @@
   --font-jp: 'Noto Sans JP', sans-serif;
 }
 
+/* ── Debug: outline every element in red to check alignment ──
+   Uncomment the rule below to see the layout grid lines; comment
+   it back out when you're done.
+
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.4);
+}
+*/
+
 /* ── Japanese text — always Noto Sans JP, never an afterthought ──
    Applies to anything tagged lang="ja" plus the JS-injected greeting,
    so current and future Japanese picks it up automatically. */
@@ -112,6 +121,7 @@ header {
   align-items: center;
   padding: 48px 60px 5px;
   background-color: var(--bg-global);
+  box-shadow: 0 1px 0 var(--gray-200);   /* thin divider line under the header, all pages */
 }
 
 header h1 {
@@ -385,11 +395,142 @@ main {
   line-height: 1.7;
 }
 
+.work-intro p + p {
+  margin-top: 16px;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: start;
+}
+
+/* ── Work section: folder/tab system ── */
+.folder {
+  display: flex;
+  flex-direction: column;
+}
+
+.folder-tabs {
+  display: flex;
+  width: 100%;
+}
+
+.folder-tab {
+  flex: 1 1 50%;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-headings);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  padding: 16px 20px;
+  position: relative;
+  z-index: 1;
+  transform: translateY(4px);
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.folder-tab.is-active {
+  z-index: 2;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.folder-tab-tech { background-color: var(--tech-header-bg); }
+.folder-tab-ad   { background-color: var(--ad-header-bg); }
+
+.folder-tab-tech,
+.folder-tab-ad {
+  border-radius: 16px 16px 0 0;
+}
+
+.folder-body {
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--tech-header-bg);
+  border-radius: 0 0 16px 16px;
+  background: var(--tech-header-bg);
+  padding: 24px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.folder[data-active="advertising"] .folder-body {
+  border-color: var(--ad-header-bg);
+  background: var(--ad-header-bg);
+  border-radius: 0 0 16px 16px;
+}
+
+.folder-panel {
+  gap: 20px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+/* .column (an author rule) sets display:flex at equal specificity to
+   [hidden]'s UA display:none, and author rules always win over UA rules —
+   so [hidden] alone can't hide these panels. Force it explicitly instead. */
+.folder-panel[hidden] {
+  display: none !important;
+}
+
+.folder-panel.is-active {
+  display: grid;
+  opacity: 1;
+}
+
+.folder-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.folder-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+/* Panels reuse .tech-column/.creative-column so .project-card h4 colors
+   stay intact, but inside the folder they're plain grids, not colored
+   full-bleed columns. */
+.folder-panel.column {
+  border-radius: 0;
+  background: none;
+  gap: 20px;
+  padding-bottom: 0;
+}
+
+.folder-panel .project-card {
+  margin: 0;
+}
+
+/* In a 2-column panel with an odd number of cards, the last card would sit
+   alone in the left cell. Make it span both columns and cap its width so it
+   centers in the row instead of hanging left. */
+.folder-grid-2 .project-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc((100% - 20px) / 2);   /* same width as a normal column (accounts for the 20px gap) */
+}
+
+@media (max-width: 768px) {
+  .folder-grid-3,
+  .folder-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* On a single-column mobile grid, the last-odd card must fill the row like
+     the rest — undo the desktop half-width centering that leaves it skinny. */
+  .folder-grid-2 .project-card:last-child:nth-child(odd) {
+    width: auto;
+    justify-self: stretch;
+  }
+
+  .folder-tab {
+    font-size: 0.9375rem;
+    padding: 14px 12px;
+  }
+
+  .folder-body {
+    padding: 16px;
+  }
 }
 
 /* ── Design System ── */
@@ -1127,21 +1268,6 @@ main {
   background-color: var(--gray-300);
 }
 
-/* Split Brain card — the two logo halves as the card media */
-.sb-card-media {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  background: var(--bg-global);
-}
-
-.sb-card-half {
-  width: 128px;
-  height: 128px;
-  display: block;
-}
-
 .project-card h4 {
   text-align: center;
   margin: 0;
@@ -1357,12 +1483,12 @@ main {
   overflow: hidden;
   display: flex;
   user-select: none;
-  
-  /* 🛠️ FIX 2: Constrain the width and center it on the desktop layout */
-  max-width: 600px;     /* Adjust this number down if you want it even narrower */
-  margin: 0 auto;       /* Centers the container horizontally on the page */
 
-  /* Premium edge fade-out gradient mask */
+  /* Constrain the width and center it on the desktop layout */
+  max-width: 600px;
+  margin: 0 auto;
+
+  /* Edge fade-out gradient mask */
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -1411,7 +1537,7 @@ main {
 .tool-wrap::after {
   content: attr(data-label);
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 15px);
   left: 50%;
   transform: translateX(-50%);
   background: var(--tech-header-bg);
@@ -1442,7 +1568,7 @@ main {
 
 .tool-icon:hover {
   filter: brightness(1.1);
-  transform: translateY(-4px) scale(1.08);
+  transform: translateY(-5px) scale(1.08);
 }
 
 /* The core engine keyframe */
@@ -1704,14 +1830,15 @@ footer {
 }
 
 /* ── Case study page ── */
-/* ── Sticky nav — project pages only (Split Brain & Math Center) ── */
+/* ── Sticky header — case-study pages only. The divider line under the header
+   is on the base `header` rule so every page has it; only the stickiness is
+   scoped here. ── */
 .case-study-page header {
   position: sticky;
   top: 0;
   z-index: 1000;
   padding-top: 24px;
   padding-bottom: 12px;
-  box-shadow: 0 1px 0 var(--gray-200);
 }
 
 .section-nav {
@@ -1818,6 +1945,10 @@ footer {
   line-height: 1.8;
 }
 
+.case-study-section p + p {
+  margin-top: 16px;
+}
+
 .case-study-section ul {
   margin: 0;
   padding-left: 20px;
@@ -1849,8 +1980,13 @@ footer {
 
 .case-study-figure {
   width: 75%;
-  margin: 0 auto;
+  margin: 28px auto;
 }
+
+/* Width modifiers: the modal before/after reads better smaller (50%), the
+   wide scope grid needs more room to read (95%). */
+.case-study-figure.vt-fig-50 { width: 50%; }
+.case-study-figure.vt-fig-95 { width: 95%; }
 
 .case-study-img {
   width: 100%;
@@ -1870,7 +2006,9 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .case-study-figure {
+  .case-study-figure,
+  .case-study-figure.vt-fig-50,
+  .case-study-figure.vt-fig-95 {
     width: 100%;
   }
 }
@@ -1889,22 +2027,24 @@ footer {
 
 /* ── Lab page ── */
 #lab-section {
-  padding: 48px 0 72px;
+  padding: 48px 0 60px;   /* bottom matches the 60px side padding from `main` */
 }
 
 .lab-project {
   margin-bottom: 48px;
 }
 
+/* Masonry via CSS columns: images have very different heights, so a grid
+   leaves big vertical gaps (rows size to the tallest item). Columns pack each
+   item directly under the previous one, closing those gaps. */
 .lab-ad-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  align-items: start;
+  column-count: 3;
+  column-gap: 12px;
 }
 
 .lab-ad-item {
-  margin: 0;
+  margin: 0 0 12px;          /* vertical gap between stacked items */
+  break-inside: avoid;       /* never split an image across two columns */
 }
 
 .lab-ad-item img,
@@ -1913,66 +2053,72 @@ footer {
   height: auto;
   border-radius: 8px;
   display: block;
-  cursor: zoom-in;
-}
-
-.lab-zoom-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.90);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  cursor: zoom-out;
-}
-
-.lab-zoom-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.lab-zoom-media {
-  max-width: 90vw;
-  max-height: 88vh;
-  border-radius: 8px;
-  object-fit: contain;
-  display: block;
-  cursor: default;
-}
-
-.lab-zoom-close {
-  position: fixed;
-  top: 20px;
-  right: 24px;
-  background: rgba(255, 255, 255, 0.15);
-  border: none;
-  color: #fff;
-  font-size: 1.125rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease;
-  z-index: 1001;
-}
-
-.lab-zoom-close:hover {
-  background: rgba(255, 255, 255, 0.28);
 }
 
 @media (max-width: 768px) {
   .lab-ad-gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    column-count: 2;
+    column-gap: 10px;
   }
+}
+
+.lab-project-heading {
+  margin-bottom: 16px;
+}
+
+.lab-demo-card {
+  display: block;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--bg-card);
+  border: 1px solid var(--gray-200);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.lab-demo-card:hover,
+.lab-demo-card:focus-visible {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+.lab-demo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: var(--gray-300);
+}
+
+.lab-demo-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.lab-demo-title {
+  font-family: var(--font-headings);
+  font-weight: 700;
+  color: var(--tech-title);
+}
+
+.lab-demo-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--tech-header-bg);
+  flex-shrink: 0;
+}
+
+/* Dark text on a white card here, not a colored button — keep the icon dark. */
+.lab-demo-link .link-icon {
+  filter: none;
 }
 
 /* ── Respect users who prefer reduced motion ── */
@@ -1999,5 +2145,362 @@ footer {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+/* ── Vivacity Tech case study ── */
+.vt-stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.vt-recreation-note {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.vt-upload-entry-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 8px;
+  /* Cap the row so button + dropzone each land near their 420px Figma width
+     (420 + 420 + 20px gap = 860). They still flex/shrink below this. */
+  max-width: 880px;
+}
+
+/* Button and dropzone split the row 50/50 */
+.vt-upload-btn,
+.vt-dropzone {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.vt-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 181px;   /* matches Figma 420×181 dropzone */
+  padding: 28px 20px;
+  border: 4px solid var(--tech-header-bg);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Drag-over: border flips navy → rust as a live "drop here now" signal. Rust
+   earns its place on a tech page here because it means something (active state)
+   rather than being decoration — consistent with the navy/rust system. */
+.vt-dropzone.vt-dropzone-active {
+  border-color: var(--ad-header-bg);
+  background-color: rgba(180, 70, 43, 0.04);
+}
+/* On drag-over the accent bits (arrow + "click to upload") go rust too, so the
+   whole active-state signal reads as one colour shift. */
+.vt-dropzone.vt-dropzone-active .vt-dropzone-icon {
+  background-color: var(--ad-header-bg);
+}
+.vt-dropzone.vt-dropzone-active .vt-dropzone-link {
+  color: var(--ad-header-bg);
+}
+
+.vt-dropzone-icon {
+  width: 28px;
+  height: 28px;
+  /* Painted via CSS mask so its color can flip navy → rust with the active
+     state from a single asset. The upload-arrow shape is inlined as the mask;
+     background-color supplies the fill. Requires the element to be a <span>
+     (not <img>) so there are no source pixels showing under the mask. */
+  background-color: var(--tech-header-bg);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 16H15V10H19L12 3L5 10H9V16ZM5 18H19V20H5V18Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 16H15V10H19L12 3L5 10H9V16ZM5 18H19V20H5V18Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: background-color 0.15s ease;
+}
+
+.vt-dropzone-text {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+}
+
+.vt-dropzone-link {
+  color: var(--tech-header-bg);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.vt-dropzone-hint {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  text-align: center;
+  margin: 0;
+}
+
+.vt-upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;   /* matches Figma 420×44 button */
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+}
+
+.vt-upload-btn-icon {
+  width: 18px;
+  height: 18px;
+  /* file_upload.svg already ships white — matches the button text */
+}
+
+.vt-file-section {
+  margin-top: 28px;
+}
+
+.vt-figma-embed {
+  margin-top: 28px;
+}
+
+/* Responsive 16:9 wrapper — the iframe fills the content column and
+   scales down on narrow screens instead of the fixed 800×450. */
+.vt-figma-frame {
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vt-figma-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.vt-file-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vt-file-section-heading {
+  font-family: var(--font-headings);
+  font-size: 0.9375rem;
+  color: var(--tech-title);
+  margin-bottom: 10px;
+}
+
+.vt-clear-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--tech-header-bg);
+  cursor: pointer;
+  padding: 0;
+}
+
+.vt-clear-btn:hover {
+  text-decoration: underline;
+}
+
+.vt-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vt-file-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.vt-file-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.vt-file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.vt-file-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  margin-bottom: 6px;
+}
+
+.vt-file-name {
+  color: var(--text-main);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vt-file-size {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.vt-progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--gray-200);
+  overflow: hidden;
+}
+
+.vt-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--tech-header-bg);
+  transition: width 0.1s linear;
+}
+
+.vt-progress-error {
+  background: #DC2626;
+}
+
+.vt-file-error {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #DC2626;
+  margin: 6px 0 0;
+}
+
+.vt-progress-pct {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  width: 38px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.vt-file-cancel {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  display: flex;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.vt-file-cancel:hover {
+  background: var(--gray-200);
+}
+
+.vt-file-cancel img {
+  width: 16px;
+  height: 16px;
+}
+
+.vt-file-row-complete .vt-file-cancel {
+  display: none;
+}
+
+/* Components section — two cropped component figures side by side. */
+.vt-component-figs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.vt-crop-fig {
+  width: 100%;
+  margin: 0;
+}
+
+/* Fixed-height window onto a tall variant grid: shows the top slice so the
+   component and its variant volume read without the full exhaustive strip. */
+.vt-crop-window {
+  height: 380px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  background: #fff;
+}
+
+.vt-crop-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Closing pull-quote — plain, italic, name links to LinkedIn. */
+.vt-closing-quote {
+  margin: 24px 0 0;
+  padding: 20px 24px;
+  border-left: 3px solid var(--tech-header-bg);
+  background: var(--gray-50);
+  border-radius: 0 8px 8px 0;
+}
+
+.vt-closing-quote p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin: 0 0 10px;
+  line-height: 1.7;
+}
+
+.vt-closing-quote cite {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.vt-closing-quote cite a {
+  color: var(--tech-header-bg);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.vt-closing-quote cite a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .vt-upload-entry-row {
+    flex-direction: column;
+  }
+
+  .vt-component-figs {
+    grid-template-columns: 1fr;
+  }
+
+  .vt-file-meta {
+    flex-direction: column;
+    gap: 2px;
   }
 }
